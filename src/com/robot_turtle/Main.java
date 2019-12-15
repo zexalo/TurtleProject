@@ -18,4 +18,15 @@ public class Main {
     public void setNbrCarte(int nbrCarte) {
         this.nbrCarte = nbrCarte;
     }
+
+    public void piocheCarte () {
+
+    }
+
+    public void defausser () {
+
+    }
+
+
+
 }
