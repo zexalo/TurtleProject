@@ -39,9 +39,6 @@ public class Tortue {
     public void utiliserLaser(){
 
     }
-    public void placerObstacle(){
-
-    }
 
     public int getPosX() {
         return posX;
