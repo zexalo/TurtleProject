@@ -14,6 +14,7 @@ public class Cartes extends Board {
         this.couleur=obstacles;
     }
 
+
     public String getCouleur() {
         return couleur;
     }
