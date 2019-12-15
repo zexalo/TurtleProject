@@ -43,7 +43,7 @@ public class Tortue {
 
     }
     public void nikeOuss(){
-
+        //biiiiiiiiiiiiiiiiiite
     }
 
     public int getPosX() {
