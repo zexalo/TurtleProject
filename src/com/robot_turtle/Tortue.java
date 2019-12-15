@@ -30,20 +30,15 @@ public class Tortue {
     public void rotationD(){
 
     }
-    public void pioche(){
 
-    }
-    public void defausser(){
-
-    }
     public void utiliserLaser(){
 
     }
     public void placerObstacle(){
 
     }
-    public void nikeOuss(){
-        //biiiiiiiiiiiiiiiiiite
+    public void retourDepart(){
+
     }
 
     public int getPosX() {
