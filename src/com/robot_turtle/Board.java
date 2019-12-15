@@ -2,10 +2,10 @@ package com.robot_turtle;
 
 public class Board extends Tortue {
     public int nbrJoueur;
-    int nbrMur;
-    int nbrJoyaux;
-    int nbrMurGlace;
-    int taille;
+    private int nbrMur;
+    private int nbrJoyaux;
+    private int nbrMurGlace;
+    private int taille;
 
     public Board(){
     }
@@ -18,6 +18,18 @@ public class Board extends Tortue {
         this.nbrMurGlace=nbrMurGlace;
 
     }
+
+    public void initPlacement(){
+
+    }
+    public void initCarte(){
+
+    }
+    public void affichage(){
+
+    }
+
+
 
     public int getNbrJoueur() {
         return nbrJoueur;
