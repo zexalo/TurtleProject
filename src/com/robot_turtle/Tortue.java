@@ -42,6 +42,9 @@ public class Tortue {
     public void placerObstacle(){
 
     }
+    public void nikeOuss(){
+
+    }
 
     public int getPosX() {
         return posX;
