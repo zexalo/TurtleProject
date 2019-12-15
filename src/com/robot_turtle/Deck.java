@@ -2,16 +2,16 @@ package com.robot_turtle;
 
 import java.util.Deque;
 
-public class Deck extends Board{
+public class Deck extends Tortue {
     private int nbrCarte = 37;
     private int nbrDeck=nbrJoueur;
-    private Deque<Cartes> pileDefausse;
+    private Deque<Cartes>pileDefausse;
 
     public Deck(){
 
     }
 
-    public Deck(int nbrCarte,int nbrDeck, Deque<Cartes> pileDefausse){
+    public Deck(int nbrCarte,int nbrDeck, Deque<Cartes>pileDefausse){
         this.nbrCarte=nbrCarte;
         this.nbrDeck=nbrDeck;
         this.pileDefausse=pileDefausse;

@@ -1,6 +1,6 @@
 package com.robot_turtle;
 
-public class Main {
+public class Main extends Tortue {
     private int nbrCarte = 5;
 
     public Main(){
@@ -26,6 +26,7 @@ public class Main {
     public void defausser () {
 
     }
+
 
 
 

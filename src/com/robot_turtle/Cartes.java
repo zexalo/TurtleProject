@@ -1,7 +1,7 @@
 package com.robot_turtle;
 
 
-public class Cartes extends Board {
+public class Cartes extends Tortue {
     private String couleur;
     private String obstacles;
 
@@ -13,6 +13,8 @@ public class Cartes extends Board {
         this.couleur=couleur;
         this.couleur=obstacles;
     }
+
+
 
 
     public String getCouleur() {

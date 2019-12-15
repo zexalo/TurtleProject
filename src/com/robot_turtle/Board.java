@@ -1,6 +1,6 @@
 package com.robot_turtle;
 
-public class Board extends Tortue {
+public class Board extends Jeu {
     public int nbrJoueur;
     private int nbrMur;
     private int nbrJoyaux;

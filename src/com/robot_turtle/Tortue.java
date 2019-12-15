@@ -2,7 +2,7 @@ package com.robot_turtle;
 
 import java.util.List;
 
-public class Tortue {
+public class Tortue extends Board {
     private Main main;
     private int posX;
     private int posY;
@@ -34,12 +34,25 @@ public class Tortue {
     public void utiliserLaser(){
 
     }
-    public void placerObstacle(){
+    public void placerMur(){
+
+    }
+    public void placerMurGlace(){
 
     }
     public void retourDepart(){
 
     }
+    public void collision(){
+
+    }
+    public void completerProg(){
+
+    }
+    public void executerProg(){
+
+    }
+
 
     public int getPosX() {
         return posX;
