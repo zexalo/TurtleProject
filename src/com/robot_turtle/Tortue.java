@@ -43,7 +43,7 @@ public class Tortue {
 
     }
     public void nikeOuss(){
-
+        // va te faire enculer sale filsd eputelpzslkjfhoep^qkopf
     }
 
     public int getPosX() {
