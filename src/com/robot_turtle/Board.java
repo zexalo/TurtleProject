@@ -1,11 +1,14 @@
 package com.robot_turtle;
 
+import java.lang.reflect.Array;
+
 public class Board extends Jeu {
     public int nbrJoueur;
     private int nbrMur;
     private int nbrJoyaux;
     private int nbrMurGlace;
     private int taille;
+    private char [][] plateau;
 
     public Board(){
     }
@@ -20,6 +23,17 @@ public class Board extends Jeu {
     }
 
     public void initPlacement(){
+        plateau = new char [8][8];
+
+
+        for (int i=0; i<8 ;i++){
+            for(int j=0;j<8;j++){
+                plateau[i][j]=' ';
+
+
+            }
+        }
+        plateau[0][0]='1';
 
     }
     public void initCarte(){

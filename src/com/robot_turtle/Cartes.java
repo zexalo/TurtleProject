@@ -2,7 +2,7 @@ package com.robot_turtle;
 
 
 public class Cartes extends Tortue {
-    private String couleur;
+    public String couleur;
     private String obstacles;
 
     public Cartes(){

@@ -1,6 +1,8 @@
 package com.robot_turtle;
 
+import java.util.ArrayDeque;
 import java.util.List;
+import java.util.Scanner;
 
 public class Tortue extends Board {
     private Main main;
@@ -8,6 +10,10 @@ public class Tortue extends Board {
     private int posY;
     private int score;
     private List orientation;
+    private List<Cartes> action;
+    ArrayDeque<String> instruction = new ArrayDeque<>();
+    Scanner scanner = new Scanner(System.in);
+    public Cartes cartes = new Cartes();
 
     public Tortue(){
 
@@ -47,11 +53,23 @@ public class Tortue extends Board {
 
     }
     public void completerProg(){
+        String action ;
+        int pile=0;
+        while( pile !=5){
+            do {
+                System.out.println("Veuillez mettre les types de cartes dans la pile d'instruction");
+                action = scanner.nextLine();
+                cartes.setCouleur(action);
+            }while (!action.equals("Bleu")&&!action.equals("Jaune")&&!action.equals("Violet"));
+            instruction.addLast(action);
+            pile++;
 
-    }
+
+    }}
     public void executerProg(){
 
     }
+
 
 
     public int getPosX() {
