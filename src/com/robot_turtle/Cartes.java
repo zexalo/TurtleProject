@@ -2,18 +2,28 @@ package com.robot_turtle;
 
 
 public class Cartes extends Tortue {
-    public String couleur;
+    private String couleur;
     private String obstacles;
 
     public Cartes(){
 
     }
 
-    public Cartes(String couleur, String obstacles){
+    public Cartes(String type_carte, String value){
+        if(type_carte == "couleur"){
+            this.couleur = value;
+        } else if (type_carte == "obstacle"){
+            this.obstacles = value;
+        } else {
+            System.out.println("je ne reconnais pas le type");
+        }
+    }
+
+  /*  public Cartes(String couleur, String obstacles){
         this.couleur=couleur;
         this.couleur=obstacles;
     }
-
+*/
 
 
 

@@ -1,22 +1,42 @@
 package com.robot_turtle;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Deque;
 
 public class Deck extends Tortue {
-    private int nbrCarte = 37;
-    private int nbrDeck=nbrJoueur;
-    private Deque<Cartes>pileDefausse;
+    private ArrayList<Cartes>pileDefausse;
+    private ArrayList<Cartes> mon_deck;
+
+    public ArrayList<Cartes> getMon_deck() {
+        return mon_deck;
+    }
+
+    public void setMon_deck(ArrayList<Cartes> mon_deck) {
+        this.mon_deck = mon_deck;
+    }
 
     public Deck(){
-
-    }
-
-    public Deck(int nbrCarte,int nbrDeck, Deque<Cartes>pileDefausse){
-        this.nbrCarte=nbrCarte;
-        this.nbrDeck=nbrDeck;
-        this.pileDefausse=pileDefausse;
+        this.mon_deck = new ArrayList<>();
+        Cartes carte_jaune = new Cartes("couleur", "jaune");
+        Cartes carte_bleue = new Cartes("couleur", "bleue");
+        Cartes carte_violet = new Cartes( "couleur" ,"violet");
+        for (int i = 0; i < 8; i++){
+            this.mon_deck.add(carte_jaune);
+        }
+        for (int i = 0; i < 8; i++){
+            this.mon_deck.add(carte_violet);
+        }
+        for (int i = 0; i < 18; i++){
+            this.mon_deck.add(carte_bleue);
+        }
     }
     public void melange(){
+        for(int i =0; i<3;i++){
+            Collections.shuffle(this.mon_deck);
+        }
+
 
 
     }
@@ -26,18 +46,9 @@ public class Deck extends Tortue {
     }
 
     public int getNbrCarte() {
-        return nbrCarte;
+        return this.mon_deck.size();
     }
 
-    public void setNbrCarte(int nbrCarte) {
-        this.nbrCarte = nbrCarte;
-    }
 
-    public int getNbrDeck() {
-        return nbrDeck;
-    }
 
-    public void setNbrDeck(int nbrDeck) {
-        this.nbrDeck = nbrDeck;
-    }
 }

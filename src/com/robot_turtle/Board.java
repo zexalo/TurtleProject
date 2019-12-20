@@ -8,7 +8,7 @@ public class Board extends Jeu {
     private int nbrJoyaux;
     private int nbrMurGlace;
     private int taille;
-    private char [][] plateau;
+    public char [][] plateau;
 
     public Board(){
     }
@@ -20,6 +20,7 @@ public class Board extends Jeu {
         this.nbrJoyaux=nbrJoyaux;
         this.nbrMurGlace=nbrMurGlace;
 
+
     }
 
     public void initPlacement(){
@@ -30,10 +31,9 @@ public class Board extends Jeu {
             for(int j=0;j<8;j++){
                 plateau[i][j]=' ';
 
-
             }
         }
-        plateau[0][0]='1';
+        plateau[0][0]='0';
 
     }
     public void initCarte(){
