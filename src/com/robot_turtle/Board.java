@@ -8,7 +8,7 @@ public class Board extends Jeu {
     private int nbrJoyaux;
     private int nbrMurGlace;
     private int taille;
-    public char [][] plateau;
+    private char [][] plateau;
 
     public Board(){
     }
@@ -36,6 +36,8 @@ public class Board extends Jeu {
         plateau[0][0]='0';
 
     }
+
+    public char[][] getPlateau (){ return plateau;}
     public void initCarte(){
 
     }

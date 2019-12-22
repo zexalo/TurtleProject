@@ -15,7 +15,7 @@ public class Tortue extends Board {
     static int i = 0;
     static int j = 0;
     private List<Cartes> action;
-    private ArrayDeque<Cartes> instruction = new ArrayDeque<>();
+    private ArrayDeque<Cartes> instruction;
     Scanner scanner = new Scanner(System.in);
     private Deck deck;
 
@@ -23,28 +23,28 @@ public class Tortue extends Board {
 
     }
 
-    public Tortue(int posX, int posY, int score, Main main, char direction, char[][] position) {
+    public Tortue(int posX, int posY, int score, Main main, char direction,Deck deck) {
         this.main = main;
         this.posX = posX;
         this.posY = posY;
         this.score = score;
         this.direction = direction;
-        this.position = position;
-        this.deck=new Deck();
+        this.deck=deck;
+        this.instruction= new ArrayDeque<Cartes>();
+        //this.position=plateau;
     }
 
-    /*public void avancer(ArrayDeque<Cartes> instructions) {
-        initPlacement();
+    public void avancer(ArrayDeque<Cartes> instructions) {
         this.position[i][j] = ' ';
-        if (instructions.getFirst()==) {//instruction d'avancement
+        if (instructions.getFirst().equals(getDeck().getCarteBleu())) {//instruction d'avancement
 
-            if (direction == 'E' && this.position[i][7] != '0') {//si la direction est east et que le pion n'est pas en position de sortir du terrain par l'east
+            if (this.direction == 'E' && this.position[i][7] != '0') {//si la direction est east et que le pion n'est pas en position de sortir du terrain par l'east
                 this.position[i][j] = ' ';//on met sa position post-deplacement a 0
                 j++;// on ajoute 1 a j qui correspond au numero de la colonne
-                position[i][j] = '0';// On met 1 a sa nouvelle position ici la ligne etant inchange le pion sera a la position i/j+1
+                this.position[i][j] = '0';// On met 1 a sa nouvelle position ici la ligne etant inchange le pion sera a la position i/j+1
                 instructions.pollFirst();//on retire l'instruction
 
-            } else if (direction == 'E' && position[i][7] == '0') {//on prend en compte la position limite de la direction EAST (toute les LIGNES de la DERNIERE colonne)
+            } else if (this.direction == 'E' && this.position[i][7] == '0') {//on prend en compte la position limite de la direction EAST (toute les LIGNES de la DERNIERE colonne)
                 instructions.pollFirst();// si le pion est dans cette position on retire juste l'instruction
             }
             if (direction == 'W' && position[i][0] != '0') {//si la direction est ouest et que le pion n'est pas en position de sortir du terrain par l'ouest
@@ -68,15 +68,15 @@ public class Tortue extends Board {
                 i++;// on ajoute 1 a i qui correspond au numero de la ligne
                 position[i][j] = '0';// On met 1 a sa nouvelle position ici la colonne etant inchange le pion sera a la position i+1/j
                 instructions.pollFirst();
-            } else if (direction == 'S' && position[7][j] == '0') {//on prend en compte la position limite de la direction SUD (toute les COLONNES de la DERNIERE ligne)
+            } else if (this.direction == 'S' && this.position[7][j] == '0') {//on prend en compte la position limite de la direction SUD (toute les COLONNES de la DERNIERE ligne)
                 instructions.pollFirst();// si le pion est dans cette position on retire juste l'instruction
             }
         }
 
-    }*/
+    }
 
     public void rotationG(ArrayDeque<Cartes> instructions) {
-        if (instructions.getFirst().equals("Jaune")) {//instruction de changement de direction vers la Gauche
+        if (instructions.getFirst().equals(getDeck().getCarteJaune())) {//instruction de changement de direction vers la Gauche
             if (direction == 'E') {
                 direction = 'N';
                 instructions.pollFirst();
@@ -94,8 +94,8 @@ public class Tortue extends Board {
 
     }
 
-    public void rotationD(ArrayDeque<String> instructions) {
-        if (instructions.getFirst().equals("Violet")) {//instruction de changement de direction vers la droite
+    public void rotationD(ArrayDeque<Cartes> instructions) {
+        if (instructions.getFirst().equals(getDeck().getCarteViolet())) {//instruction de changement de direction vers la droite
             if (direction == 'E') {
                 direction = 'S';
                 instructions.pollFirst();
@@ -133,23 +133,69 @@ public class Tortue extends Board {
 
     }
 
-    /*public void completerProg() {
+    public void completerProg() {
         String action;
         int pile = 0;
-        while (pile != 5) {
+        int nbrCartePile=0;
+        do {
+            System.out.println("Veuillez entrez le nombre de carte que vous desirez placer en instruction");
+            nbrCartePile = scanner.nextInt();
+            System.out.println(nbrCartePile);
+        }while(nbrCartePile<0||nbrCartePile>5);
+
+        while (pile != nbrCartePile) {
             do {
                 System.out.println("Veuillez mettre les types de cartes dans la pile d'instruction");
                 action = scanner.nextLine();
-                cartes.setCouleur(action);
+                if (action.equals("Bleu")) {
+                    if(this.main.getMa_main().contains(getDeck().getCarteBleu())){
+                    int b = this.main.getMa_main().indexOf(getDeck().getCarteBleu());
+                    this.main.getMa_main().remove(b);
+                    this.main.voirMain();
+                    this.instruction.addLast(this.main.getMa_main().get(b));
+                    pile++;
+                    }else{
+                        System.out.println("Vous n'avez pas de carte bleu !");
+                    }
+                }else if (action.equals("Jaune")) {
+                    if(this.main.getMa_main().contains(getDeck().getCarteJaune())){
+                        int j = this.main.getMa_main().indexOf(getDeck().getCarteJaune());
+                        this.main.getMa_main().remove(j);
+                        this.main.voirMain();
+                        this.instruction.addLast(this.main.getMa_main().get(j));
+                        pile++;
+                    }else{
+                        System.out.println("Vous n'avez pas de carte Jaune !");
+                    }
+                }else if (action.equals("Violet")){
+                    if(this.main.getMa_main().contains(getDeck().getCarteViolet())){
+                        int v = this.main.getMa_main().indexOf(getDeck().getCarteViolet());
+                        this.main.getMa_main().remove(v);
+                        this.main.voirMain();
+                        this.instruction.addLast(this.main.getMa_main().get(v));
+                        pile++;
+                    }else{
+                        System.out.println("Vous n'avez pas de carte Violette !");
+                    }
+                }else{
+                    System.out.println("ENTREZ UNE ACTION VALIDE");
+                }
             } while (!action.equals("Bleu") && !action.equals("Jaune") && !action.equals("Violet"));
-            instruction.addLast(action);
-            pile++;
+
 
 
         }
-    }*/
+    }
 
     public void executerProg() {
+
+        for (int i=0;i<this.instruction.size();i++){
+            System.out.println(this.instruction);
+        rotationD(this.instruction);
+        rotationG(this.instruction);
+        }
+        System.out.println(this.direction);
+
 
     }
 
