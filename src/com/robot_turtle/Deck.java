@@ -11,6 +11,7 @@ public class Deck extends Tortue {
     private Cartes carte_jaune = new Cartes("couleur", "jaune");
     private Cartes carte_bleue = new Cartes("couleur", "bleue");
     private Cartes carte_violet = new Cartes( "couleur" ,"violet");
+    private Cartes carte_laser = new Cartes( "couleur" ,"laser");
 
     public ArrayList<Cartes> getMon_deck() {
         return mon_deck;
@@ -30,6 +31,9 @@ public class Deck extends Tortue {
         }
         for (int i = 0; i < 18; i++){
             this.mon_deck.add(carte_bleue);
+        }
+        for (int i = 0; i < 3; i++){
+            this.mon_deck.add(carte_laser);
         }
     }
     public void melange(){
@@ -66,6 +70,9 @@ public class Deck extends Tortue {
     }
     public Cartes getCarteViolet(){
         return carte_violet;
+    }
+    public Cartes getCarteLaser(){
+        return carte_laser;
     }
 
 

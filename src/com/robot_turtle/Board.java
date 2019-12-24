@@ -9,16 +9,25 @@ public class Board extends Jeu {
     private int nbrMurGlace;
     private int taille;
     private char [][] plateau;
+    private Tortue t1;
+
+
 
     public Board(){
+
+
+
     }
 
-    public Board(int nbrJoueur, int nbrMur,int taille,int nbrJoyaux,int nbrMurGlace){
+    public Board(Tortue t1){
+        this.t1= t1;
+
+        /*
         this.nbrJoueur=nbrJoueur;
         this.nbrMur=nbrMur;
         this.taille=taille;
         this.nbrJoyaux=nbrJoyaux;
-        this.nbrMurGlace=nbrMurGlace;
+        this.nbrMurGlace=nbrMurGlace;*/
 
 
     }
@@ -31,9 +40,13 @@ public class Board extends Jeu {
             for(int j=0;j<8;j++){
                 plateau[i][j]=' ';
 
+
+
+
             }
         }
-        plateau[0][0]='0';
+        plateau[t1.getPosX()][t1.getPosY()]='0';
+
 
     }
 
@@ -82,6 +95,9 @@ public class Board extends Jeu {
     public int getTaille() {
         return taille;
     }
+    //public Tortue getTortue() {
+        //return t1;
+    //}
 
     public void setTaille(int taille) {
         this.taille = taille;
