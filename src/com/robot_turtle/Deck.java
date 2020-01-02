@@ -8,6 +8,7 @@ import java.util.Deque;
 public class Deck extends Tortue {
     private ArrayList<Cartes>pileDefausse;
     private ArrayList<Cartes> mon_deck;
+    private ArrayList<Cartes> deck_defausse;
     private ArrayList<Mur> deckM;
     private Mur tuile_mur = new Mur('8');
     private Mur tuile_mur_glace = new Mur('#');
@@ -19,11 +20,20 @@ public class Deck extends Tortue {
         return mon_deck;
     }
     public ArrayList<Mur> getDeckM(){return deckM;}
+
+    public ArrayList<Cartes> getDeck_defausse() {
+        return deck_defausse;
+    }
+
     public void setMon_deck(ArrayList<Cartes> mon_deck) {
         this.mon_deck = mon_deck;
     }
     public void setDeckM(ArrayList<Mur> deckM) {
         this.deckM = deckM;
+    }
+
+    public void setDeck_defausse(ArrayList<Cartes> deck_defausse) {
+        this.deck_defausse = deck_defausse;
     }
 
     public Deck(){
@@ -49,6 +59,7 @@ public class Deck extends Tortue {
         for (int i = 0; i < 2; i++){
             this.deckM.add(tuile_mur_glace);
         }
+        this.deck_defausse=new ArrayList<>();
     }
     public void melange(){
         //On melange 6 fois le deck de carte
@@ -70,6 +81,13 @@ public class Deck extends Tortue {
         //On parcour le deck pour afficher chaque carte de celuici
         for (int i = 0; i < this.mon_deck.size()-1; i++){
             System.out.println(this.mon_deck.get(i));
+        }
+
+    }
+    public void voirDeckDefausse(){
+        //On parcour le deck pour afficher chaque carte de celuici
+        for (int i = 0; i < this.deck_defausse.size(); i++){
+            System.out.println(this.deck_defausse.get(i));
         }
 
     }

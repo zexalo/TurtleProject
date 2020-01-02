@@ -1,11 +1,11 @@
 package com.robot_turtle;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Tortue extends Board {
-    //private Board board = new Board();
+public class Tortue  {
     private Deck deck;
     private Main main;
     //private int posX;
@@ -18,6 +18,7 @@ public class Tortue extends Board {
     private ArrayDeque<Cartes> instruction;
     private int nbrCartePile;
     Scanner scanner = new Scanner(System.in);
+    char apparence;
 
 
     public Tortue() {
@@ -35,6 +36,7 @@ public class Tortue extends Board {
         this.instruction= new ArrayDeque<Cartes>();
         this.position = new char [8][8];
         this.nbrCartePile=0;
+        this.apparence=apparence;
 
 
         for (int a=0; a<8 ;a++){
@@ -48,40 +50,47 @@ public class Tortue extends Board {
         //this.position=plateau;
     }
 
-    public void avancer(ArrayDeque<Cartes> instructions) {//instruction d'avancement
+    public void avancer(ArrayDeque<Cartes> instructions,char [][]plateau) {//instruction d'avancement
 
-            if (this.direction == 'E' && this.position[this.i][7] != '0') {//si la direction est east et que le pion n'est pas en position de sortir du terrain par l'east
-                this.position[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
+            if (this.direction == 'E' && plateau[this.i][7] != '0') {//si la direction est east et que le pion n'est pas en position de sortir du terrain par l'east
+                plateau[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
                 this.j++;// on ajoute 1 a j qui correspond au numero de la colonne
-                this.position[this.i][this.j] = '0';// On met 1 a sa nouvelle position ici la ligne etant inchange le pion sera a la position i/j+1
-                instructions.pollFirst();//on retire l'instruction
+                plateau[this.i][this.j] = '0';// On met 1 a sa nouvelle position ici la ligne etant inchange le pion sera a la position i/j+1
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+                //on retire l'instruction
 
-            } else if (this.direction == 'E' && this.position[this.i][7] == '0') {//on prend en compte la position limite de la direction EAST (toute les LIGNES de la DERNIERE colonne)
+            } else if (this.direction == 'E' && plateau[this.i][7] == '0') {//on prend en compte la position limite de la direction EAST (toute les LIGNES de la DERNIERE colonne)
                 instructions.pollFirst();// si le pion est dans cette position on retire juste l'instruction
             }
-            if (this.direction == 'W' && this.position[this.i][0] != '0') {//si la direction est ouest et que le pion n'est pas en position de sortir du terrain par l'ouest
-                this.position[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
+            if (this.direction == 'W' && plateau[this.i][0] != '0') {//si la direction est ouest et que le pion n'est pas en position de sortir du terrain par l'ouest
+                plateau[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
                 this.j--;// on enleve 1 a j qui correspond au numero de la colonne
-                this.position[this.i][this.j] = '0';// On met 1 a sa nouvelle position ici la ligne etant inchange le pion sera a la position i/j-1
-                instructions.pollFirst();
-            } else if (this.direction == 'W' && this.position[this.i][0] == '0') {//on prend en compte la position limite de la direction OUEST (toute les LIGNES de la PREMIERE colonne)
-                instructions.pollFirst();// si le pion est dans cette position on retire juste l'instruction
+                plateau[this.i][this.j] = '0';// On met 1 a sa nouvelle position ici la ligne etant inchange le pion sera a la position i/j-1
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
+            } else if (this.direction == 'W' && plateau[this.i][0] == '0') {//on prend en compte la position limite de la direction OUEST (toute les LIGNES de la PREMIERE colonne)
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+                // si le pion est dans cette position on retire juste l'instruction
             }
-            if (this.direction == 'N' && this.position[0][this.j] != '0') {
-                this.position[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
+            if (this.direction == 'N' && plateau[0][this.j] != '0') {
+                plateau[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
                 this.i--;// on enleve 1 a i qui correspond au numero de la ligne
-                this.position[this.i][this.j] = '0';// On met 1 a sa nouvelle position ici la colonne etant inchange le pion sera a la position i-1/j
-                instructions.pollFirst();
-            } else if (this.direction == 'N' && this.position[0][this.j] == '0') {//on prend en compte la position limite de la direction NORD (toute les COLONNES de la PREMIERE ligne)
-                instructions.pollFirst();// si le pion est dans cette position on retire juste l'instruction
+                plateau[this.i][this.j] = '0';// On met 1 a sa nouvelle position ici la colonne etant inchange le pion sera a la position i-1/j
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
+            } else if (this.direction == 'N' && plateau[0][this.j] == '0') {//on prend en compte la position limite de la direction NORD (toute les COLONNES de la PREMIERE ligne)
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+                // si le pion est dans cette position on retire juste l'instruction
             }
-            if (this.direction == 'S' && this.position[7][this.j] != '0') {
-                this.position[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
+            if (this.direction == 'S' && plateau[7][this.j] != '0') {
+                plateau[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
                 this.i++;// on ajoute 1 a i qui correspond au numero de la ligne
-                this.position[this.i][this.j] = '0';// On met 1 a sa nouvelle position ici la colonne etant inchange le pion sera a la position i+1/j
-                instructions.pollFirst();
-            } else if (this.direction == 'S' && this.position[7][this.j] == '0') {//on prend en compte la position limite de la direction SUD (toute les COLONNES de la DERNIERE ligne)
-                instructions.pollFirst();// si le pion est dans cette position on retire juste l'instruction
+                plateau[this.i][this.j] = '0';// On met 1 a sa nouvelle position ici la colonne etant inchange le pion sera a la position i+1/j
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
+            } else if (this.direction == 'S' && plateau[7][this.j] == '0') {//on prend en compte la position limite de la direction SUD (toute les COLONNES de la DERNIERE ligne)
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+                // si le pion est dans cette position on retire juste l'instruction
             }
         }
 
@@ -91,16 +100,20 @@ public class Tortue extends Board {
         //instruction de changement de direction vers la Gauche
             if (direction == 'E') {
                 direction = 'N';
-                instructions.pollFirst();
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
             } else if (direction == 'S') {
                 direction = 'E';
-                instructions.pollFirst();
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
             } else if (direction == 'W') {
                 direction = 'S';
-                instructions.pollFirst();
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
             } else if (direction == 'N') {
                 direction = 'W';
-                instructions.pollFirst();
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
             }
         }
 
@@ -110,16 +123,20 @@ public class Tortue extends Board {
         //instruction de changement de direction vers la droite
             if (direction == 'E') {
                 direction = 'S';
-                instructions.pollFirst();
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
             } else if (direction == 'S') {
                 direction = 'W';
-                instructions.pollFirst();
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
             } else if (direction == 'W') {
                 direction = 'N';
-                instructions.pollFirst();
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
             } else if (direction == 'N') {
                 direction = 'E';
-                instructions.pollFirst();
+                this.deck.getDeck_defausse().add(instructions.getFirst());
+
             }
         }
 
@@ -221,11 +238,11 @@ public class Tortue extends Board {
         }
     }
 
-    public void executerProg() {
+    public void executerProg(char [][] plateau) {
+
         for (int i=0;i<nbrCartePile;i++){//erreur avec instruction.size() comme modifier dans avancer et rotationD/G boucle non respecter
-            System.out.println(this.instruction);
             if (this.instruction.getFirst().equals(getDeck().getCarteBleu())) {
-                avancer(this.instruction);
+                avancer(this.instruction,plateau);
             }
             else if (this.instruction.getFirst().equals(getDeck().getCarteJaune())) {
             rotationG(this.instruction);
@@ -240,6 +257,9 @@ public class Tortue extends Board {
 
     }
 
+    public char getApparence() {
+        return apparence;
+    }
 
     public int getPosX() {
         return this.i;

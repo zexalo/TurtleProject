@@ -1,6 +1,6 @@
 package com.robot_turtle;
 
-public class Joyaux extends Board {
+public class Joyaux  {
     private String couleur;
     private int posX;
     private int posY;

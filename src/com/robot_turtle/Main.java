@@ -38,13 +38,13 @@ public class Main extends Tortue {
     }
 
     public void piocheCarte () {
-        ma_main.add(this.getDeck().getMon_deck().get(0));
-        this.getDeck().getMon_deck().remove(0);
+        this.ma_main.add(this.getDeck().getMon_deck().get(0));
 
     }
 
     public void defausser (int numeroCarte) {
-        ma_main.remove(numeroCarte);
+        this.deck.getDeck_defausse().add(this.ma_main.get(numeroCarte));
+        this.ma_main.remove(numeroCarte);
 
     }
     public void voirMain(){
