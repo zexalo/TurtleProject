@@ -51,6 +51,11 @@ public class Board extends Jeu {
     }
 
     public char[][] getPlateau (){ return plateau;}
+
+    public void setPlateau(char[][] plateau) {
+        this.plateau = plateau;
+    }
+
     public void initCarte(){
 
     }

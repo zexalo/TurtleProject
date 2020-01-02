@@ -129,11 +129,34 @@ public class Tortue extends Board {
 
     }
 
-    public void placerMur() {
+    public void placerMur(char [][] plateau) {
+        int i;
+        int j;
+        do{
+            System.out.println("Veuiller rentrer le numero de la ligne ou placer le mur ");
+            i = scanner.nextInt();
+            System.out.println("Veuiller rentrer le numero de la colonne ou placer le mur ");
+            j = scanner.nextInt();
+            plateau[i][j]='8';
+        }while(i<0 || i>8 ||j<0 ||j>8);
+
+
+
+        //this.deck.getDeckM().remove()
 
     }
 
-    public void placerMurGlace() {
+    public void placerMurGlace(char [][] plateau) {
+        int i;
+        int j;
+        do{
+            System.out.println("Veuiller rentrer le numero de la ligne ou placer le mur ");
+            i = scanner.nextInt();
+            System.out.println("Veuiller rentrer le numero de la colonne ou placer le mur ");
+            j = scanner.nextInt();
+            plateau[i][j]='#';
+        }while(i<0 || i>8 ||j<0 ||j>8);
+
 
     }
 

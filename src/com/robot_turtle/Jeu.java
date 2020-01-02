@@ -10,8 +10,10 @@ public class Jeu{
     public static void main(String[] args) {
         Tortue t1 = new Tortue('0',0,0,0,'E');
         Board plateau=new Board(t1);
+
         boolean jeu=true;
         plateau.initPlacement();
+        //position[8][0]
         t1.getDeck().melange();
         t1.getMain().piocheDepart();
         System.out.println("************************************************");
@@ -36,7 +38,9 @@ public class Jeu{
                 System.out.println("Voulez vous completez un programme : Tapez 1");
                 System.out.println("Voulez vous executez un programme : Tapez 2");
                 System.out.println("Voulez vous placez un Mur : Tapez 3");
-                selection = scanner.nextInt();}while(selection<0||selection>3);
+                selection = scanner.nextInt();}
+            while(selection<0||selection>3);
+
             if (selection==1){
                 t1.completerProg();
             }else if (selection==2){
@@ -48,7 +52,17 @@ public class Jeu{
                     System.out.println(Arrays.toString(row));
                 }
             }else{
-                t1.placerMur();
+                String murselec = "";
+                scanner= new Scanner(System.in);
+                System.out.println("Quelle mur voulez vous place ? glace ou pierre ?");
+                murselec = scanner.nextLine();
+                if(murselec.equals("pierre")){
+                    t1.placerMur(plateau.getPlateau());
+                    t1.getDeck().getDeckM().remove(t1.getDeck().getMur());
+                }else if (murselec.equals("glace")){
+                    t1.placerMurGlace(plateau.getPlateau());
+                    t1.getDeck().getDeckM().remove(t1.getDeck().getMurGlace());
+                }
             }
 
             System.out.println(t1.getMain().getNbrCarteM());
