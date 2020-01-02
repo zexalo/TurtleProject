@@ -42,4 +42,5 @@ public class Cartes extends Tortue {
     public void setObstacles(String obstacles) {
         this.obstacles = obstacles;
     }
+
 }
