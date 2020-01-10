@@ -44,9 +44,9 @@ public class Jeu{
                 System.out.println(Arrays.toString(row));
             }
             do {
-                System.out.println("Voulez vous completez un programme : Tapez 1");
-                System.out.println("Voulez vous executez un programme : Tapez 2");
-                System.out.println("Voulez vous placez un Mur : Tapez 3");
+                System.out.println("Voulez vous completer un programme ? : Tapez 1");
+                System.out.println("Voulez vous executer un programme ? : Tapez 2");
+                System.out.println("Voulez vous placer un Mur ? : Tapez 3");
                 selection = scanner.nextInt();}
             while(selection<0||selection>3);
 
