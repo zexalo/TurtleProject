@@ -18,6 +18,7 @@ public class Jeu{
         plateau.getTortue().get(0).getMain().piocheDepart();
         plateau.getTortue().get(1).getDeck().melange();
         plateau.getTortue().get(1).getMain().piocheDepart();
+        plateau.getTortue().get(0).getMain().getMa_main().add(plateau.getTortue().get(0).getDeck().getCarteLaser());
         System.out.println("************************************************");
         System.out.println(plateau.getTortue().get(0).getDeck().getCarteJaune());
         System.out.println(plateau.getTortue().get(0).getDeck().getCarteBleu());
@@ -70,9 +71,14 @@ public class Jeu{
 
 
             }else if (selection==2){
+               /*  //Test Pour voir les interactions entre la pile de defausse et la file d'instruction
+                System.out.println("avant");
+                plateau.getTortue().get(0).voirInstruction();  //voir instruction renvoie true ou false si elle est vide ou non
+                plateau.getTortue().get(0).getDeck().voirDeckDefausse();
+                System.out.println("apres");
+                plateau.getTortue().get(0).voirInstruction();
+                plateau.getTortue().get(0).getDeck().voirDeckDefausse();*/
                 plateau.getTortue().get(0).executerProg(plateau.getPlateau());
-                System.out.println(plateau.getTortue().get(0).getPosY());
-                System.out.println(plateau.getTortue().get(0).getPosX());
                 for (char[] row : plateau.getPlateau()){
                     System.out.println(Arrays.toString(row));
                 }
