@@ -1,9 +1,6 @@
 package com.robot_turtle;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Tortue {
     private Deck deck;
@@ -13,8 +10,10 @@ public class Tortue {
     private int score;
     private char direction;
     private char[][] position;
-    public int i;
-    public int j;
+    private int i;
+    private int j;
+    private int initPosi;
+    private int initPosj;
     private ArrayDeque<Cartes> instruction;
     private int nbrCartePile;
     Scanner scanner = new Scanner(System.in);
@@ -31,6 +30,8 @@ public class Tortue {
         this.main = new Main(this.deck);
         this.i = i;
         this.j = j;
+        this.initPosi = i;
+        this.initPosj = j;
         this.score = score;
         this.direction = direction;
         this.instruction = new ArrayDeque<Cartes>();
@@ -154,38 +155,74 @@ public class Tortue {
     }
 
 
-    public void utiliserLaser(char[][] plateau) {
-        if (this.getDirection() == 'E') {
+    public void utiliserLaser(Board plateau) {
             for (int j = this.getPosY(); j < 8; j++) {
-                if (plateau[this.getPosX()][j] == '#') {
-                    plateau[this.getPosX()][j] = ' ';
+                if (this.getDirection() == 'E') {
+                    if (plateau.getPlateau()[this.getPosX()][j] == '#') {
+                    plateau.getPlateau()[this.getPosX()][j] = ' ';
+                } else if (plateau.getPlateau()[this.getPosX()][j] == '8') {
+                    break;
+                } else if (plateau.getPlateau()[this.getPosX()][j] == plateau.getJoyaux().get(i).getApparence()) {
+                    for (int i = j; i > 0; i--) {
+                        if (plateau.getPlateau()[this.getPosX()][i] == '#') {
+                            plateau.getPlateau()[this.getPosX()][j] = ' ';
+                        } else if (plateau.getPlateau()[this.getPosX()][j] == '8') {
+                            break;
+                        } else if (plateau.getPlateau()[this.getPosX()][i] == '#') {
+                            this.setPosX(initPosi);
+                            this.setPosY(initPosj);
+                        }
+
+                    }
                 }
             }
-        } else if (this.getDirection() == 'W') {
-            for (int j = getPosY(); j > 0; j--) {
-                if (plateau[this.getPosX()][j] == '#') {
-                    plateau[this.getPosX()][j] = ' ';
+         else if (this.getDirection() == 'W') {
+                if (plateau.getPlateau()[this.getPosX()][j] == '#') {
+                    plateau.getPlateau()[this.getPosX()][j] = ' ';
+                } else if (plateau.getPlateau()[this.getPosX()][j] == '8') {
+                    break;
                 }
             }
 
-        } else if (this.getDirection() == 'N') {
-            for (int i = getPosX(); i > 0; i--) {
-                if (plateau[i][this.getPosY()] == '#') {
-                    plateau[i][this.getPosY()] = ' ';
+         else if (this.getDirection() == 'N') {
+
+                if (plateau.getPlateau()[i][this.getPosY()] == '#') {
+                    plateau.getPlateau()[i][this.getPosY()] = ' ';
+                } else if (plateau.getPlateau()[this.getPosX()][j] == '8') {
+                    break;
                 }
-            }
-        } else if (this.getDirection()=='S'){
-            for (int i = this.getPosX(); i < 8; i++) {
-                if (plateau[i][this.getPosY()] == '#') {
-                    plateau[i][this.getPosY()] = ' ';
-                }else{
-                    System.out.println("pas glace");
+
+        } else if (this.getDirection() == 'S') {
+                if (plateau.getPlateau()[j][this.getPosY()] == '#') {
+                    plateau.getPlateau()[j][this.getPosY()] = ' ';
+                } else if (plateau.getPlateau()[this.getPosX()][j] == '8') {
+                    break;
+                } else if (plateau.getPlateau()[j][this.getPosY()] == plateau.getJoyaux().get(0).getApparence()) {
+                    for (int i = j; i > 0; i--) {
+                        System.out.println("oui");
+                        if (plateau.getPlateau()[i][this.getPosY()] == '#') {
+                            plateau.getPlateau()[i][this.getPosY()] = ' ';
+                        } else if (plateau.getPlateau()[i][this.getPosY()] == '8') {
+                            break;
+                        } else if (plateau.getPlateau()[i][this.getPosY()] == this.getApparence()) {
+                            System.out.println("oui2");
+                            plateau.getPlateau()[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
+                            this.setPosX(initPosi);
+                            this.setPosY(initPosj);
+                            System.out.println(initPosi);
+                            System.out.println(initPosj);
+                            plateau.getPlateau()[this.i][this.j] = this.getApparence();
+
+
+                        }
+
+                    }
                 }
-            }
+
         }
 
 
-    }
+    }}
 
     public void placerMur(char[][] plateau) {
         int i;
@@ -286,17 +323,17 @@ public class Tortue {
                 } else {
                     System.out.println("ENTREZ UNE ACTION VALIDE");
                 }
-            } while (!action.equals("Bleu") && !action.equals("Jaune") && !action.equals("Violet")&& !action.equals("Laser"));
+            } while (!action.equals("Bleu") && !action.equals("Jaune") && !action.equals("Violet") && !action.equals("Laser"));
 
 
         }
     }
 
-    public void executerProg(char[][] plateau) {
+    public void executerProg(Board plateau) {
 
         for (int i = 0; i < nbrCartePile; i++) {//erreur avec instruction.size() comme modifier dans avancer et rotationD/G boucle non respecter
             if (this.instruction.getFirst().equals(getDeck().getCarteBleu())) {
-                avancer(plateau);
+                avancer(plateau.getPlateau());
             } else if (this.instruction.getFirst().equals(getDeck().getCarteJaune())) {
                 rotationG();
             } else if (this.instruction.getFirst().equals(getDeck().getCarteViolet())) {
@@ -320,6 +357,7 @@ public class Tortue {
     public int getPosX() {
         return this.i;
     }
+
 
     public int getPosY() {
         return this.j;
@@ -365,4 +403,43 @@ public class Tortue {
         System.out.println(this.instruction.isEmpty());
 
     }
+
+    public void joyAtteint(Joyaux j) {
+        if (this.getPosX() == j.getPosX() && this.getPosY() == j.getPosY()) {
+            this.score++;
+
+        }
+    }
+
+    public void defausser() {
+        int defausse;
+        scanner = new Scanner(System.in);
+        do {
+            System.out.println("Voulez vous defausser vos cartes ? entrer le nombre entre 0 et 5 ");
+            defausse = scanner.nextInt();
+        } while (defausse < 0 || defausse > 5 && defausse != 9);
+
+        for (int i = 0; i != defausse; i++) {
+            int posC;
+            scanner = new Scanner(System.in);
+            do {
+                System.out.println("Choisissez la position de la  carte a defausser ");
+                posC = scanner.nextInt();
+            } while (posC < 0 || posC > this.getMain().getMa_main().size() - 1);
+            System.out.println(defausse);
+            this.getMain().defausserM(posC);
+            this.getMain().voirMain();
+        }
+        if (this.getMain().getMa_main().size() != 5) {
+            System.out.println(this.getMain().getMa_main().size());
+            for (int i = this.getMain().getMa_main().size(); i < 5; i++) {
+                System.out.println("oui");
+                this.getMain().getMa_main().add(this.getDeck().getDeque_deck().getFirst());
+                this.getDeck().getDeque_deck().pollFirst();
+            }
+        }
+        this.getMain().voirMain();
+        System.out.println("Nombre carte deck :" + this.getDeck().getNbrCarte());
+    }
+
 }

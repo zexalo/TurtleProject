@@ -8,6 +8,7 @@ import java.util.Deque;
 public class Deck extends Tortue {
     private ArrayList<Cartes>pileDefausse;
     private ArrayList<Cartes> mon_deck;
+    private ArrayDeque<Cartes> deque_deck;
     private ArrayList<Cartes> deck_defausse;
     private ArrayList<Mur> deckM;
     private Mur tuile_mur = new Mur('8');
@@ -16,18 +17,23 @@ public class Deck extends Tortue {
     private Cartes carte_bleue = new Cartes("couleur", "bleue");
     private Cartes carte_violet = new Cartes( "couleur" ,"violet");
     private Cartes carte_laser = new Cartes( "couleur" ,"laser");
-    public ArrayList<Cartes> getMon_deck() {
-        return mon_deck;
+
+
+
+    public ArrayDeque<Cartes> getMon_deck() {
+        return deque_deck;
     }
     public ArrayList<Mur> getDeckM(){return deckM;}
+
+    public ArrayDeque<Cartes> getDeque_deck() {
+        return deque_deck;
+    }
 
     public ArrayList<Cartes> getDeck_defausse() {
         return deck_defausse;
     }
 
-    public void setMon_deck(ArrayList<Cartes> mon_deck) {
-        this.mon_deck = mon_deck;
-    }
+
     public void setDeckM(ArrayList<Mur> deckM) {
         this.deckM = deckM;
     }
@@ -66,6 +72,8 @@ public class Deck extends Tortue {
         for(int i =0; i<6;i++){
             Collections.shuffle(this.mon_deck);
         }
+        deque_deck=new ArrayDeque<>(mon_deck);
+
 
 
 
@@ -93,7 +101,7 @@ public class Deck extends Tortue {
     }
 
     public int getNbrCarte() {
-        return this.mon_deck.size();
+        return this.deque_deck.size();
     }
     public Cartes getCarteBleu(){
         return carte_bleue;

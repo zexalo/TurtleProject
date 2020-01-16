@@ -8,65 +8,50 @@ public class Jeu{
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Board plateau=new Board(2);
+        Board plateau=new Board(4);
         boolean jeu=true;
         plateau.initPlacement();
-        plateau.initTortueSurPlat(plateau.getTortue().get(0));
-        plateau.initTortueSurPlat(plateau.getTortue().get(1));
         //position[8][0]
-        plateau.getTortue().get(0).getDeck().melange();
-        plateau.getTortue().get(0).getMain().piocheDepart();
-        plateau.getTortue().get(1).getDeck().melange();
-        plateau.getTortue().get(1).getMain().piocheDepart();
-        plateau.getTortue().get(0).getMain().getMa_main().add(plateau.getTortue().get(0).getDeck().getCarteLaser());
+        int tour =0;
+        int joueur =0;
+        for (int i=0;i<plateau.getNbrJoueur();i++){
+        plateau.getTortue().get(joueur).getDeck().melange();
+        plateau.getTortue().get(joueur).getMain().piocheDepart();
+        plateau.getTortue().get(joueur).getMain().getMa_main().add(plateau.getTortue().get(joueur).getDeck().getCarteLaser());
+        System.out.println(plateau.getTortue().get(joueur).getDeck());
         System.out.println("************************************************");
-        System.out.println(plateau.getTortue().get(0).getDeck().getCarteJaune());
-        System.out.println(plateau.getTortue().get(0).getDeck().getCarteBleu());
-        System.out.println(plateau.getTortue().get(0).getDeck().getCarteViolet());
-        System.out.println(" ");
-        System.out.println(plateau.getTortue().get(1).getDeck().getCarteJaune());
-        System.out.println(plateau.getTortue().get(1).getDeck().getCarteBleu());
-        System.out.println(plateau.getTortue().get(1).getDeck().getCarteViolet());
+        System.out.println(plateau.getTortue().get(joueur).getDeck().getCarteJaune());
+        System.out.println(plateau.getTortue().get(joueur).getDeck().getCarteBleu());
+        System.out.println(plateau.getTortue().get(joueur).getDeck().getCarteViolet());
         System.out.println("************************************************");
-        System.out.println("Nombre carte deck :" + plateau.getTortue().get(0).getDeck().getNbrCarte());
-        System.out.println("Nombre carte Main :" + plateau.getTortue().get(0).getMain().getNbrCarteM());
+        System.out.println("Nombre carte deck :" + plateau.getTortue().get(joueur).getDeck().getNbrCarte());
+        System.out.println("Nombre carte Main :" + plateau.getTortue().get(joueur).getMain().getNbrCarteM());
         System.out.println("************************************************");
-        plateau.getTortue().get(0).getMain().voirMain();
-        System.out.println(" ");
-        plateau.getTortue().get(1).getMain().voirMain();
+        plateau.getTortue().get(joueur).getMain().voirMain();
         System.out.println("************************************************");
+        joueur++;
+        }
+        joueur=0;
         while(jeu){
-            int tour=0;
             int selection;
-            System.out.println(plateau.getTortue().get(0).getPosY());
-            System.out.println(plateau.getTortue().get(0).getPosX());
+            System.out.println("Tour n°" + tour);
+            System.out.println("Joueur n°"+joueur);
             for (char[] row : plateau.getPlateau()){
                 System.out.println(Arrays.toString(row));
             }
             do {
-                System.out.println("Voulez vous completez un programme : Tapez 1");
-                System.out.println("Voulez vous executez un programme : Tapez 2");
-                System.out.println("Voulez vous placez un Mur : Tapez 3");
+                System.out.println("Voulez vous completer un programme : Tapez 1");
+                System.out.println("Voulez vous executer un programme : Tapez 2");
+                System.out.println("Voulez vous placer un Mur : Tapez 3");
                 selection = scanner.nextInt();}
             while(selection<0||selection>3);
 
             if (selection==1){
-                int defausse;
-                plateau.getTortue().get(0).completerProg();
-                scanner= new Scanner(System.in);
-                do{System.out.println("Voulez vous defausser vos cartes ? entrer le nombre entre 0 et 5 ou 9 pour ne pas defausser ");
-                defausse=scanner.nextInt();}while(defausse<0||defausse>5&&defausse!=9);
-                if (defausse==9){
-                    break;
-                }else {
-                    for(int i=defausse-1;i!=-1;i--){
-                        System.out.println(defausse);
-                        //System.out.println(t1.getMain().getNbrCarteM());
-                        plateau.getTortue().get(0).getMain().defausser(i);
-                    }
-                }
-                plateau.getTortue().get(0).getMain().voirMain();
-                plateau.getTortue().get(0).getDeck().voirDeckDefausse();
+                plateau.getTortue().get(joueur).completerProg();
+                plateau.getTortue().get(joueur).defausser();
+
+                //plateau.getTortue().get(joueur).getDeck().voirDeckDefausse();
+
 
 
 
@@ -78,28 +63,42 @@ public class Jeu{
                 System.out.println("apres");
                 plateau.getTortue().get(0).voirInstruction();
                 plateau.getTortue().get(0).getDeck().voirDeckDefausse();*/
-                plateau.getTortue().get(0).executerProg(plateau.getPlateau());
+                plateau.getTortue().get(joueur).executerProg(plateau);
                 for (char[] row : plateau.getPlateau()){
                     System.out.println(Arrays.toString(row));
                 }
+
+
+
             }else{
                 String murselec = "";
                 scanner= new Scanner(System.in);
                 System.out.println("Quelle mur voulez vous place ? glace ou pierre ?");
                 murselec = scanner.nextLine();
                 if(murselec.equals("pierre")){
-                    plateau.getTortue().get(0).placerMur(plateau.getPlateau());
-                    plateau.getTortue().get(0).getDeck().getDeckM().remove(plateau.getTortue().get(0).getDeck().getMur());
+                    plateau.getTortue().get(joueur).placerMur(plateau.getPlateau());
+                    plateau.getTortue().get(joueur).getDeck().getDeckM().remove(plateau.getTortue().get(0).getDeck().getMur());
                 }else if (murselec.equals("glace")){
-                    plateau.getTortue().get(0).placerMurGlace(plateau.getPlateau());
-                    plateau.getTortue().get(0).getDeck().getDeckM().remove(plateau.getTortue().get(0).getDeck().getMurGlace());
+                    plateau.getTortue().get(joueur).placerMurGlace(plateau.getPlateau());
+                    plateau.getTortue().get(joueur).getDeck().getDeckM().remove(plateau.getTortue().get(0).getDeck().getMurGlace());
                 }
             }
+            for(int i=0;i<plateau.getNbrJoyaux();i++){
+                plateau.getTortue().get(joueur).joyAtteint(plateau.getJoyaux().get(i));}
+            if (plateau.getTortue().get(joueur).getScore()==1){
+                jeu=false;
+            }
 
-            System.out.println(plateau.getTortue().get(0).getMain().getNbrCarteM());
-            System.out.println(plateau.getTortue().get(0).getDirection());
-            tour+=1;
-            System.out.println(tour);
+            System.out.println(plateau.getTortue().get(joueur).getMain().getNbrCarteM());
+            System.out.println(plateau.getTortue().get(joueur).getDirection());
+            System.out.println(plateau.getTortue().get(joueur).getScore());
+            tour++;
+            joueur++;
+
+           if (joueur>=plateau.getNbrJoueur()){
+                joueur=0;
+            }
+
         }
 
 

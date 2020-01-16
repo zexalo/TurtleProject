@@ -30,19 +30,19 @@ public class Main extends Tortue {
 
     public void piocheDepart() {
         for(int i=0;i<5;i++){
-            this.ma_main.add(this.deck.getMon_deck().get(i));
-            this.deck.getMon_deck().remove(i);
+            this.ma_main.add(this.deck.getDeque_deck().getFirst());
+            this.deck.getMon_deck().pollFirst();
         }
 
 
     }
 
     public void piocheCarte () {
-        this.ma_main.add(this.getDeck().getMon_deck().get(0));
+        this.ma_main.add(this.getDeck().getDeque_deck().getFirst());
 
     }
 
-    public void defausser (int numeroCarte) {
+    public void defausserM (int numeroCarte) {
         this.deck.getDeck_defausse().add(this.ma_main.get(numeroCarte));
         this.ma_main.remove(numeroCarte);
 
