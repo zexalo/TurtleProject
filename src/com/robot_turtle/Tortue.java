@@ -62,7 +62,9 @@ public class Tortue {
             //on retire l'instruction
 
         } else if (this.direction == 'E' && plateau[this.i][7] == '0') {//on prend en compte la position limite de la direction EAST (toute les LIGNES de la DERNIERE colonne)
-            this.instruction.pollFirst();// si le pion est dans cette position on retire juste l'instruction
+            this.direction = 'W';
+            this.deck.getDeck_defausse().add(this.instruction.getFirst());
+            this.instruction.pollFirst(); // si le pion est dans cette position on retire juste l'instruction
         }
         if (this.direction == 'W' && plateau[this.i][0] != '0') {//si la direction est ouest et que le pion n'est pas en position de sortir du terrain par l'ouest
             plateau[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
@@ -72,6 +74,7 @@ public class Tortue {
             this.instruction.pollFirst();
 
         } else if (this.direction == 'W' && plateau[this.i][0] == '0') {//on prend en compte la position limite de la direction OUEST (toute les LIGNES de la PREMIERE colonne)
+            this.direction = 'E';
             this.deck.getDeck_defausse().add(this.instruction.getFirst());
             this.instruction.pollFirst();
             // si le pion est dans cette position on retire juste l'instruction
@@ -84,6 +87,7 @@ public class Tortue {
             this.instruction.pollFirst();
 
         } else if (this.direction == 'N' && plateau[0][this.j] == '0') {//on prend en compte la position limite de la direction NORD (toute les COLONNES de la PREMIERE ligne)
+            this.direction = 'S';
             this.deck.getDeck_defausse().add(this.instruction.getFirst());
             this.instruction.pollFirst();
             // si le pion est dans cette position on retire juste l'instruction
@@ -96,6 +100,7 @@ public class Tortue {
             this.instruction.pollFirst();
 
         } else if (this.direction == 'S' && plateau[7][this.j] == '0') {//on prend en compte la position limite de la direction SUD (toute les COLONNES de la DERNIERE ligne)
+            this.direction = 'N';
             this.deck.getDeck_defausse().add(this.instruction.getFirst());
             this.instruction.pollFirst();
             // si le pion est dans cette position on retire juste l'instruction
