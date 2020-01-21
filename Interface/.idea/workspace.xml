@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="af9b9bec-6f5b-4416-aa16-a0b071057b47" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1V6R2WpuzwEAgW2SLI4N4CrFUNy" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Cours A1/Algo et Prog/new_turtle/TurtleProject" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zexal\workspace\Interface\src" />
+      <recent name="C:\Users\zexal\workspace\Interface\src\image" />
+      <recent name="C:\Users\zexal\workspace\Interface\image" />
+      <recent name="C:\Users\zexal\workspace\Interface" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\zexal\workspace\Interface\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Jeu">
+    <configuration name="Jeu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Jeu" />
+      <module name="Interface" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Interface" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Jeu" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="af9b9bec-6f5b-4416-aa16-a0b071057b47" name="Default Changelist" comment="" />
+      <created>1576571351904</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576571351904</updated>
+      <workItem from="1576571354958" duration="538000" />
+      <workItem from="1576617803926" duration="1279000" />
+      <workItem from="1576781568829" duration="1062000" />
+      <workItem from="1576918144518" duration="594000" />
+      <workItem from="1577014859434" duration="1179000" />
+      <workItem from="1577189006800" duration="15445000" />
+      <workItem from="1577365041191" duration="3159000" />
+      <workItem from="1577899172735" duration="5550000" />
+      <workItem from="1578318731464" duration="596000" />
+      <workItem from="1578415532298" duration="1419000" />
+      <workItem from="1578644176102" duration="1340000" />
+      <workItem from="1578679790714" duration="3174000" />
+      <workItem from="1578689920485" duration="1567000" />
+      <workItem from="1578697605143" duration="13195000" />
+      <workItem from="1578757525449" duration="12447000" />
+      <workItem from="1578833740656" duration="18473000" />
+      <workItem from="1578904168256" duration="9665000" />
+      <workItem from="1578954176530" duration="3540000" />
+      <workItem from="1579077390309" duration="1285000" />
+      <workItem from="1579097750162" duration="6502000" />
+      <workItem from="1579172778488" duration="22949000" />
+      <workItem from="1579246883398" duration="1417000" />
+      <workItem from="1579262698990" duration="33388000" />
+      <workItem from="1579456929900" duration="738000" />
+      <workItem from="1579530650534" duration="671000" />
+      <workItem from="1579542727060" duration="824000" />
+      <workItem from="1579621977468" duration="2157000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
