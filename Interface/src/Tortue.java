@@ -13,6 +13,8 @@ public class Tortue {
     private char[][] position;
     public int i;
     public int j;
+    private int initPosi;
+    private int initPosj;
     private ArrayDeque<Cartes> instruction;
     private int nbrCartePile=0;
     Scanner scanner = new Scanner(System.in);
@@ -28,6 +30,8 @@ public class Tortue {
         this.main = new Main(this.deck);
         this.i = i;
         this.j = j;
+        this.initPosi = i;
+        this.initPosj = j;
         this.score = score;
         this.direction = direction;
         this.instruction = new ArrayDeque<Cartes>();
@@ -166,38 +170,100 @@ public class Tortue {
     }
 
 
-    public void utiliserLaser(char[][] plateau) {
-        if (this.getDirection() == 'E') {
-            for (int j = this.getPosY(); j < 8; j++) {
-                if (plateau[this.getPosX()][j] == '#') {
-                    plateau[this.getPosX()][j] = ' ';
+    public void utiliserLaser(Board plateau) {
+        for (int j = this.getPosY(); j < 8; j++) {
+            if (this.getDirection() == 'E') {
+                if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Glace")) {
+                    plateau.getPlateau()[this.getPosX()][j].setText("Vide");
+                    plateau.getPlateau()[this.getPosX()][j].setIcon(null);
+                } else if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Mur")) {
+                    break;
+                } else if (plateau.getPlateau()[this.getPosX()][j] == plateau.getJoyaux().get(i).getApparenceJ()) {
+                    for (int i = j; i > 0; i--) {
+                        if (plateau.getPlateau()[this.getPosX()][i].getText().equals("Glace")) {
+                            plateau.getPlateau()[this.getPosX()][j].setText("Vide");
+                            plateau.getPlateau()[this.getPosX()][j].setIcon(null);
+                        } else if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Mur")) {
+                            break;
+                        } else if (plateau.getPlateau()[this.getPosX()][i].getText().equals("Glace")) {
+                            this.setPosX(initPosi);
+                            this.setPosY(initPosj);
+                        }
+
+                    }
                 }
             }
-        } else if (this.getDirection() == 'W') {
-            for (int j = getPosY(); j > 0; j--) {
-                if (plateau[this.getPosX()][j] == '#') {
-                    plateau[this.getPosX()][j] = ' ';
+            else if (this.getDirection() == 'W') {
+                if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Glace")) {
+                    plateau.getPlateau()[this.getPosX()][j].setText("Vide");
+                    plateau.getPlateau()[this.getPosX()][j].setIcon(null);
+                } else if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Mur")) {
+                    break;
+                } else if (plateau.getPlateau()[this.getPosX()][j] == plateau.getJoyaux().get(i).getApparenceJ()) {
+                    for (int i = j; i > 0; i--) {
+                        if (plateau.getPlateau()[this.getPosX()][i].getText().equals("Glace")) {
+                            plateau.getPlateau()[this.getPosX()][j].setText("Vide");
+                            plateau.getPlateau()[this.getPosX()][j].setIcon(null);
+                        } else if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Mur")) {
+                            break;
+                        } else if (plateau.getPlateau()[this.getPosX()][i].getText().equals("Glace")) {
+                            this.setPosX(initPosi);
+                            this.setPosY(initPosj);
+                        }
+
+                    }
                 }
             }
 
-        } else if (this.getDirection() == 'N') {
-            for (int i = getPosX(); i > 0; i--) {
-                if (plateau[i][this.getPosY()] == '#') {
-                    plateau[i][this.getPosY()] = ' ';
+            else if (this.getDirection() == 'N') {
+
+                if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Glace")) {
+                    plateau.getPlateau()[this.getPosX()][j].setText("Vide");
+                    plateau.getPlateau()[this.getPosX()][j].setIcon(null);
+                } else if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Mur")) {
+                    break;
+                } else if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Joyaux")) {
+                    for (int i = j; i > 0; i--) {
+                        if (plateau.getPlateau()[this.getPosX()][i].getText().equals("Glace")) {
+                            plateau.getPlateau()[this.getPosX()][j].setText("Vide");
+                            plateau.getPlateau()[this.getPosX()][j].setIcon(null);
+                        } else if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Mur")) {
+                            break;
+                        } else if (plateau.getPlateau()[this.getPosX()][i].getText().equals("Glace")) {
+                            this.setPosX(initPosi);
+                            this.setPosY(initPosj);
+                        }
+
+                    }
+                }
+
+            } else if (this.getDirection() == 'S') {
+                if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Glace")) {
+                    plateau.getPlateau()[this.getPosX()][j].setText("Vide");
+                    plateau.getPlateau()[this.getPosX()][j].setIcon(null);
+                } else if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Mur")) {
+                    break;
+                } else if (plateau.getPlateau()[this.getPosX()][j] == plateau.getJoyaux().get(i).getApparenceJ()) {
+                    for (int i = j; i > 0; i--) {
+                        if (plateau.getPlateau()[this.getPosX()][i].getText().equals("Glace")) {
+                            plateau.getPlateau()[this.getPosX()][j].setText("Vide");
+                            plateau.getPlateau()[this.getPosX()][j].setIcon(null);
+                        } else if (plateau.getPlateau()[this.getPosX()][j].getText().equals("Mur")) {
+                            break;
+                        } else if (plateau.getPlateau()[this.getPosX()][i].getText().equals("Glace")) {
+                            plateau.getPlateau()[this.getPosX()][j].setText("Vide");
+                            plateau.getPlateau()[this.getPosX()][j].setIcon(null);
+                            this.setPosX(initPosi);
+                            this.setPosY(initPosj);
+
+                        }
+
+                    }
                 }
             }
-        } else if (this.getDirection()=='S'){
-            for (int i = this.getPosX(); i < 8; i++) {
-                if (plateau[i][this.getPosY()] == '#') {
-                    plateau[i][this.getPosY()] = ' ';
-                }else{
-                    System.out.println("pas glace");
-                }
-            }
-        }
 
 
-    }
+    }}
 
 
     public void retourDepart() {
@@ -349,7 +415,7 @@ public class Tortue {
         return nbrCartePile;
     }
 
-    public void voirInstruction(Fenetre fen) {
+    public void voirInstruction(Session fen) {
 
         for (int i = 0; i < this.instruction.size(); i++){
             if (this.instruction.getFirst().equals(this.deck.getCarteBleu())){

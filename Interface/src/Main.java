@@ -86,7 +86,7 @@ public class Main extends Tortue {
 
 
     }
-    public void voirMain(Fenetre fen ){
+    public void voirMain(Session fen ){
         // on parcour les bouton representant les cartes de la main pour leur assigner le nom et apparence correspondant
         for (int i = 0; i < this.ma_main.size(); i++){
             if (this.ma_main.get(i).equals(this.deck.getCarteBleu())){

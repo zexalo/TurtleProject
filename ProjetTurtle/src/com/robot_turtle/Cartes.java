@@ -10,11 +10,9 @@ public class Cartes extends Tortue {
     }
 
     public Cartes(String type_carte, String value){
-        if(type_carte == "couleur"){
+        if(type_carte.equals("couleur")){
             this.couleur = value;
-        } else if (type_carte == "obstacle"){
-            this.obstacles = value;
-        } else {
+        }else {
             System.out.println("je ne reconnais pas le type");
         }
     }

@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -8,7 +7,7 @@ public class Cartes extends JButton {
     private String obstacles;
     private Icon skin;
 
-    public Cartes(Fenetre fen)
+    public Cartes(Session fen)
     {
 
         this.addMouseListener(new MouseListener() {

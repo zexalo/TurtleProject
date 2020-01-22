@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -10,7 +9,7 @@ public class AfficheCarte extends JButton {
     public AfficheCarte(){
 
     }
-    public AfficheCarte(Fenetre fen)
+    public AfficheCarte(Session fen)
     {
 
         this.addMouseListener(new MouseListener() {

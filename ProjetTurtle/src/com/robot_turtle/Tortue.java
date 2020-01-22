@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Tortue {
     private Deck deck;
-    private Main main;
+    private Hand hand;
     //private int posX;
     //private int posY;
     private int score;
@@ -16,8 +16,9 @@ public class Tortue {
     private int initPosj;
     private ArrayDeque<Cartes> instruction;
     private int nbrCartePile;
-    Scanner scanner = new Scanner(System.in);
-    char apparence;
+    private Scanner scanner = new Scanner(System.in);
+
+    private char apparence;
 
 
     public Tortue() {
@@ -27,7 +28,7 @@ public class Tortue {
 
     public Tortue(char apparence, int i, int j, int score, char direction) {
         this.deck = new Deck();
-        this.main = new Main(this.deck);
+        this.hand = new Hand(this.deck);
         this.i = i;
         this.j = j;
         this.initPosi = i;
@@ -64,7 +65,7 @@ public class Tortue {
         } else if (this.direction == 'E' && plateau[this.i][7] == '0') {//on prend en compte la position limite de la direction EAST (toute les LIGNES de la DERNIERE colonne)
             this.direction = 'W';
             this.deck.getDeck_defausse().add(this.instruction.getFirst());
-            this.instruction.pollFirst(); // si le pion est dans cette position on retire juste l'instruction
+            this.instruction.pollFirst(); // si le pion est dans cette position on lui fait faire un demi tour
         }
         if (this.direction == 'W' && plateau[this.i][0] != '0') {//si la direction est ouest et que le pion n'est pas en position de sortir du terrain par l'ouest
             plateau[this.i][this.j] = ' ';//on met sa position post-deplacement a 0
@@ -161,6 +162,7 @@ public class Tortue {
 
 
     public void utiliserLaser(Board plateau) {
+        //# mur de glace et 8 mur de pierre
             for (int j = this.getPosY(); j < 8; j++) {
                 if (this.getDirection() == 'E') {
                     if (plateau.getPlateau()[this.getPosX()][j] == '#') {
@@ -285,42 +287,42 @@ public class Tortue {
                 System.out.println("Veuillez mettre les types de cartes dans la pile d'instruction");
                 action = scanner.nextLine();
                 if (action.equals("Bleu")) {
-                    if (this.main.getMa_main().contains(getDeck().getCarteBleu())) {
-                        int b = this.main.getMa_main().indexOf(getDeck().getCarteBleu());
-                        this.instruction.addLast(this.main.getMa_main().get(b));
-                        this.main.getMa_main().remove(b);
-                        this.main.voirMain();
+                    if (this.hand.getMa_main().contains(getDeck().getCarteBleu())) {
+                        int b = this.hand.getMa_main().indexOf(getDeck().getCarteBleu());
+                        this.instruction.addLast(this.hand.getMa_main().get(b));
+                        this.hand.getMa_main().remove(b);
+                        this.hand.voirMain();
                         pile++;
                     } else {
                         System.out.println("Vous n'avez pas de carte bleu !");
                     }
                 } else if (action.equals("Laser")) {
-                    if (this.main.getMa_main().contains(getDeck().getCarteLaser())) {
-                        int l = this.main.getMa_main().indexOf(getDeck().getCarteLaser());
-                        this.instruction.addLast(this.main.getMa_main().get(l));
-                        this.main.getMa_main().remove(l);
-                        this.main.voirMain();
+                    if (this.hand.getMa_main().contains(getDeck().getCarteLaser())) {
+                        int l = this.hand.getMa_main().indexOf(getDeck().getCarteLaser());
+                        this.instruction.addLast(this.hand.getMa_main().get(l));
+                        this.hand.getMa_main().remove(l);
+                        this.hand.voirMain();
                         pile++;
                     } else {
                         System.out.println("Vous n'avez pas de carte Laser !");
                     }
 
                 } else if (action.equals("Jaune")) {
-                    if (this.main.getMa_main().contains(getDeck().getCarteJaune())) {
-                        int j = this.main.getMa_main().indexOf(getDeck().getCarteJaune());
-                        this.instruction.addLast(this.main.getMa_main().get(j));
-                        this.main.getMa_main().remove(j);
-                        this.main.voirMain();
+                    if (this.hand.getMa_main().contains(getDeck().getCarteJaune())) {
+                        int j = this.hand.getMa_main().indexOf(getDeck().getCarteJaune());
+                        this.instruction.addLast(this.hand.getMa_main().get(j));
+                        this.hand.getMa_main().remove(j);
+                        this.hand.voirMain();
                         pile++;
                     } else {
                         System.out.println("Vous n'avez pas de carte Jaune !");
                     }
                 } else if (action.equals("Violet")) {
-                    if (this.main.getMa_main().contains(getDeck().getCarteViolet())) {
-                        int v = this.main.getMa_main().indexOf(getDeck().getCarteViolet());
-                        this.instruction.addLast(this.main.getMa_main().get(v));
-                        this.main.getMa_main().remove(v);
-                        this.main.voirMain();
+                    if (this.hand.getMa_main().contains(getDeck().getCarteViolet())) {
+                        int v = this.hand.getMa_main().indexOf(getDeck().getCarteViolet());
+                        this.instruction.addLast(this.hand.getMa_main().get(v));
+                        this.hand.getMa_main().remove(v);
+                        this.hand.voirMain();
                         pile++;
                     } else {
                         System.out.println("Vous n'avez pas de carte Violette !");
@@ -396,8 +398,8 @@ public class Tortue {
         return this.deck;
     }
 
-    public Main getMain() {
-        return this.main;
+    public Hand getHand() {
+        return this.hand;
     }
 
     public ArrayDeque<Cartes> getInstruction() {
@@ -430,20 +432,20 @@ public class Tortue {
             do {
                 System.out.println("Choisissez la position de la  carte a defausser ");
                 posC = scanner.nextInt();
-            } while (posC < 0 || posC > this.getMain().getMa_main().size() - 1);
+            } while (posC < 0 || posC > this.getHand().getMa_main().size() - 1);
             System.out.println(defausse);
-            this.getMain().defausserM(posC);
-            this.getMain().voirMain();
+            this.getHand().defausserM(posC);
+            this.getHand().voirMain();
         }
-        if (this.getMain().getMa_main().size() != 5) {
-            System.out.println(this.getMain().getMa_main().size());
-            for (int i = this.getMain().getMa_main().size(); i < 5; i++) {
+        if (this.getHand().getMa_main().size() != 5) {
+            System.out.println(this.getHand().getMa_main().size());
+            for (int i = this.getHand().getMa_main().size(); i < 5; i++) {
                 System.out.println("oui");
-                this.getMain().getMa_main().add(this.getDeck().getDeque_deck().getFirst());
+                this.getHand().getMa_main().add(this.getDeck().getDeque_deck().getFirst());
                 this.getDeck().getDeque_deck().pollFirst();
             }
         }
-        this.getMain().voirMain();
+        this.getHand().voirMain();
         System.out.println("Nombre carte deck :" + this.getDeck().getNbrCarte());
     }
 

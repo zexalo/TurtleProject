@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Board{
@@ -28,11 +26,11 @@ public class Board{
 
 
 
-    public Fenetre getFe() {
+    public Session getFe() {
         return fe;
     }
 
-    public Fenetre fe;
+    public Session fe;
 
     public Board(int nbrJoueur) {
         this.mode = Mode.JEU;
@@ -97,7 +95,7 @@ public class Board{
 
     }
 
-    public void initPlacement(Fenetre fen) {
+    public void initPlacement(Session fen) {
         pan1 = new JPanel();//Creation du panel pour la grille de case
         m1=new ImageIcon(this.getClass().getResource("Images/Murs/Wall brick.png"));
         m2=new ImageIcon(this.getClass().getResource("Images/Murs/ice wall.png"));
@@ -327,6 +325,24 @@ public class Board{
 
         }
         return listortue;
+    }
+    public ArrayList<Joyaux> getJoyaux() {
+        ArrayList<Joyaux> listjoyaux = new ArrayList<>();
+        switch (nbrJoueur) {
+            case 2:
+                listjoyaux.add(j1);
+
+            case 3:
+                listjoyaux.add(j1);
+                listjoyaux.add(j2);
+                listjoyaux.add(j3);
+            case 4:
+                listjoyaux.add(j1);
+                listjoyaux.add(j2);
+
+
+        }
+        return listjoyaux;
     }
 
     public Mode getMode() {
