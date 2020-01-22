@@ -24,15 +24,15 @@ public class Cartes extends JButton {
                     String name=mouseEvent.getComponent().getName();
                     fen.getPan_instruction().getComponent(i).setName(name);
                     fen.increCompteur_instruction(i);
-                    fen.getPlateau().getTortue().get(0).completerProg(name);
-                    System.out.println(fen.getPlateau().getTortue().get(0).getInstruction());
+                    fen.getPlateau().getTortue().get(fen.getJoueur()).completerProg(name);
+                    System.out.println(fen.getPlateau().getTortue().get(fen.getJoueur()).getInstruction());
 
                 }
                 if ( fen.getPlateau().getMode().equals(Mode.DEFAUSSE)){
-                    System.out.println(fen.getPlateau().getTortue().get(0).getMain().getMa_main());
+                    System.out.println(fen.getPlateau().getTortue().get(fen.getJoueur()).getMain().getMa_main());
                     mouseEvent.getComponent().setVisible(false);
                     String name=mouseEvent.getComponent().getName();
-                    fen.getPlateau().getTortue().get(0).getMain().defausser(name);
+                    fen.getPlateau().getTortue().get(fen.getJoueur()).getMain().defausser(name);
 
 
                 }

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class Fenetre extends JFrame implements ActionListener {
 
-    private int numt;
     private JButton buttonCompleter;
     private JButton buttonExecuter;
     private JButton buttonPlacer;
@@ -27,13 +26,13 @@ public class Fenetre extends JFrame implements ActionListener {
     private JPanel panInfo;
     private JPanel pan2;
     private JPanel pan_instruction;
-    private int tour;
+    private static int tour=0;
+    private static int joueur=0;
 
 
     public Fenetre() {
+        this.plateau=new Board(3);
         this.compteur_instruction=0;
-        this.numt = 0;
-        this.tour = 0;
         this.setTitle("Test Turtle");
         int width = 1920;
         int height = 820;
@@ -44,13 +43,15 @@ public class Fenetre extends JFrame implements ActionListener {
 
 
 
+
         //Panel Boutton 3 Actions
         pan2 = new JPanel();
+        tourN = new JLabel("Tour N° " + tour);
         buttonCompleter = new JButton("Completer Programme");
         buttonExecuter = new JButton("Executer Programme");
         buttonPlacer = new JButton("Placer Tuile");
         valider= new JButton("Valider !");
-        tourN = new JLabel("Tour N° " + tour);
+
         pan2.setLayout(new GridLayout(3, 1));
         pan2.add(buttonCompleter);
         pan2.add(buttonExecuter);
@@ -82,6 +83,7 @@ public class Fenetre extends JFrame implements ActionListener {
         //Panel Info
         panInfo = new JPanel();
         info = new JLabel();
+        info.setText("Joueur n " + joueur);
         panInfo.setBounds(0, 550, 550, 230);
         panInfo.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
         panInfo.add(info);
@@ -101,7 +103,7 @@ public class Fenetre extends JFrame implements ActionListener {
 
 
 
-
+        plateau.initPlacement(this);
         this.add(pan_instruction);
         this.add(panMain);
         this.add(panInfo);
@@ -119,8 +121,8 @@ public class Fenetre extends JFrame implements ActionListener {
     }
 
     public void creationPlateau() {
-        plateau = new Board(2);
-        plateau.initPlacement(this);
+
+
 
 
     }
@@ -134,18 +136,46 @@ public class Fenetre extends JFrame implements ActionListener {
     }
 
     public void jeu() {
-        plateau.getTortue().get(0).getDeck().melange();
-        plateau.getTortue().get(0).getMain().piocheDepart();
-        plateau.getTortue().get(1).getDeck().melange();
-        plateau.getTortue().get(1).getMain().piocheDepart();
-        plateau.getTortue().get(0).getMain().voirMain(this);
 
+        switch (plateau.getNbrJoueur()) {
+            //Switch case qui construit le plateau selon le nombre de joueur demander
+            case 2:
+                plateau.getTortue().get(0).getDeck().melange();
+                plateau.getTortue().get(0).getMain().piocheDepart();
+                plateau.getTortue().get(1).getDeck().melange();
+                plateau.getTortue().get(1).getMain().piocheDepart();
+
+                break;
+            case 3:
+                plateau.getTortue().get(0).getDeck().melange();
+                plateau.getTortue().get(0).getMain().piocheDepart();
+                plateau.getTortue().get(1).getDeck().melange();
+                plateau.getTortue().get(1).getMain().piocheDepart();
+                plateau.getTortue().get(2).getDeck().melange();
+                plateau.getTortue().get(2).getMain().piocheDepart();
+
+                break;
+            case 4:
+                plateau.getTortue().get(0).getDeck().melange();
+                plateau.getTortue().get(0).getMain().piocheDepart();
+                plateau.getTortue().get(1).getDeck().melange();
+                plateau.getTortue().get(1).getMain().piocheDepart();
+                plateau.getTortue().get(2).getDeck().melange();
+                plateau.getTortue().get(2).getMain().piocheDepart();
+                plateau.getTortue().get(3).getDeck().melange();
+                plateau.getTortue().get(3).getMain().piocheDepart();
+
+                break;
+
+        }
+        plateau.getTortue().get(0).getMain().voirMain(this);
     }
 
 
 
+
     public void actionPerformed(ActionEvent actionEvent) {
-        Tortue tortue = plateau.getTortue().get(numt);
+        Tortue tortue = plateau.getTortue().get(joueur);
 
             if (actionEvent.getSource() == buttonCompleter) {
                 info.setText("Selectionner les cartes a mettre en instruction puis valider");
@@ -154,50 +184,57 @@ public class Fenetre extends JFrame implements ActionListener {
 
 //
 
-            } else if (actionEvent.getSource() == buttonExecuter) {
+            } else if (actionEvent.getSource() == buttonExecuter && !plateau.getTortue().get(joueur).getInstruction().isEmpty()) {
 
-                System.out.println(plateau.getTortue().get(0).getInstruction());
-                plateau.getTortue().get(0).executerProg(plateau.getPlateau());
+                plateau.getTortue().get(joueur).executerProg(plateau.getPlateau());
                 this.setCompteur_instruction(0);
                 for (int i=0;i<5;i++){
                     pan_instruction.getComponent(i).setVisible(false);
                 }
-                System.out.println(plateau.getTortue().get(0).getInstruction());
+                this.changementTour();
+                plateau.getTortue().get(joueur).getMain().voirMain(this);
+                System.out.println(joueur);
+
 
             } else if (actionEvent.getSource() == buttonPlacer && plateau.getTortue().get(0).getDeck().getDeckM().size()!=0) {
                 info.setText("<html>Selectionnez la case ou placer le mur,click gauche = mur de pierre et click droit = mur de glace<br>" +
-                        "Vous avez "+plateau.getTortue().get(0).getDeck().getNbrPierre()+" Mur de pierre "
-                        +plateau.getTortue().get(0).getDeck().getNbrGlace()+" mur Glace</html>\n");
+                        "Vous avez "+plateau.getTortue().get(joueur).getDeck().getNbrPierre()+" Mur de pierre "
+                        +plateau.getTortue().get(joueur).getDeck().getNbrGlace()+" mur Glace</html>\n");
                 plateau.setMode(Mode.PLACEMENT);
                 modePlacement();
 
-                tour++;
-                numt++;
-                if (numt == plateau.getNbrJoueur()) {
-                    numt = 0;
-                }
+
+
 
                 tourN.setText("Tour N° " + tour);
             } else if (actionEvent.getSource() == buttonPlacer && plateau.getMode() == Mode.JEU&& plateau.getTortue().get(0).getDeck().getDeckM().size()==0) {
                 info.setText(" Vous n'avez plus de mur");
             }else if (actionEvent.getSource() == valider && plateau.getMode().equals(Mode.COMPLETER)){
-                System.out.println(plateau.getMode());
+
                 plateau.setMode(Mode.DEFAUSSE);
                 modeDefausse();
                 info.setText("Selectionner les cartes a defausser");
             }else if (actionEvent.getSource() == valider && plateau.getMode().equals(Mode.DEFAUSSE)){
-                info.setText("");
-                plateau.getTortue().get(0).getMain().piocheCarte();
+                info.setText("Joueur n " + joueur);
+                plateau.getTortue().get(joueur).getMain().piocheCarte();
                 plateau.setMode(Mode.JEU);
-                plateau.getTortue().get(0).getMain().voirMain(this);
+                plateau.getTortue().get(joueur).getMain().voirMain(this);
                 for(int i=0;i<5;i++){
                     panMain.getComponent(i).setVisible(true);
                 }
                 modeJeu();
+                this.changementTour();
+                plateau.getTortue().get(joueur).getMain().voirMain(this);
+                System.out.println(tour);
+                System.out.println(joueur);
 
             }else if (actionEvent.getSource() == valider && plateau.getMode().equals(Mode.JEU)){
                 modeJeu();
-                info.setText("");
+                info.setText("Joueur n " + joueur);
+                this.changementTour();
+               plateau.getTortue().get(joueur).getMain().voirMain(this);
+                System.out.println(tour);
+                System.out.println(joueur);
 
             }
 
@@ -244,6 +281,22 @@ public class Fenetre extends JFrame implements ActionListener {
 
     public Board getPlateau() {
         return plateau;
+    }
+
+    public int getJoueur() {
+        return joueur;
+    }
+
+    public void changementTour(){
+
+        tour++;
+        joueur++;
+        if (joueur == plateau.getNbrJoueur()) {
+            joueur = 0;
+        }
+        plateau.getTortue().get(joueur).getMain().voirMain(this);
+        tourN.setText("Tour N° " + tour);
+        info.setText("Joueur n " + joueur);
     }
 
     public void setCompteur_instruction(int compteur_instruction) {

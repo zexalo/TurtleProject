@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class Joyaux  {
-    private JLabel apparence;
+    private Icon apparence;
     private int posX;
     private int posY;
 
@@ -10,7 +10,7 @@ public class Joyaux  {
 
     }
 
-    public Joyaux(JLabel apparence, int posX, int posY){
+    public Joyaux(Icon apparence, int posX, int posY){
         this.apparence=apparence;
         this.posX=posX;
         this.posY=posY;
@@ -25,7 +25,7 @@ public class Joyaux  {
         return posY;
     }
 
-    public JLabel getApparenceJ() {
+    public Icon getApparenceJ() {
         return apparence;
     }
 }

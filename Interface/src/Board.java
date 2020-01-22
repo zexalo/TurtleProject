@@ -52,37 +52,35 @@ public class Board{
         l4.setIcon(i4);
 
         //Icone du joyau
-        Icon j1=new ImageIcon(this.getClass().getResource("Images/Murs/ruby2.png"));
+        Icon ji1=new ImageIcon(this.getClass().getResource("Images/Murs/ruby2.png"));
         JLabel ruby = new JLabel();
-        ruby.setIcon(j1);
+        ruby.setIcon(ji1);
 
         //Icones mur
-
-
 
         switch (nbrJoueur) {
             //Switch case qui construit le plateau selon le nombre de joueur demander
             case 2:
                 this.t1 = new Tortue(i1, 0, 1, 0, 'S');
                 this.t2 = new Tortue(i2, 0, 5, 0, 'S');
-                this.j1 = new Joyaux(ruby, 7, 3);
+                this.j1 = new Joyaux(ji1, 7, 3);
 
                 break;
             case 3:
                 this.t1 = new Tortue(i1, 0, 0, 0, 'S');
                 this.t2 = new Tortue(i2, 0, 3, 0, 'S');
                 this.t3 = new Tortue(i3, 0, 6, 0, 'S');
-                this.j1 = new Joyaux(ruby, 7, 0);
-                this.j2 = new Joyaux(ruby, 7, 3);
-                this.j3 = new Joyaux(ruby, 7, 6);
+                this.j1 = new Joyaux(ji1, 7, 0);
+                this.j2 = new Joyaux(ji1, 7, 3);
+                this.j3 = new Joyaux(ji1, 7, 6);
                 break;
             case 4:
                 this.t1 = new Tortue(i1, 0, 0, 0, 'S');
                 this.t2 = new Tortue(i2, 0, 2, 0, 'S');
                 this.t3 = new Tortue(i3, 0, 5, 0, 'S');
                 this.t4 = new Tortue(i4, 0, 7, 0, 'S');
-                this.j1 = new Joyaux(ruby, 7, 1);
-                this.j2 = new Joyaux(ruby, 7, 6);
+                this.j1 = new Joyaux(ji1, 7, 1);
+                this.j2 = new Joyaux(ji1, 7, 6);
                 break;
 
         }
@@ -123,12 +121,13 @@ public class Board{
                     for (int j = 0; j < 8; j++) {
                         plateau[i][j] = new AfficheCase(i,j,"", this);
                         plateau[i][j].setName("Vide");
-                        plateau[i][j].setOpaque(true);
+                        plateau[i][j].setOpaque(false);
+                        plateau[i][j].setContentAreaFilled(false);
                         plateau[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
                         pan1.add(plateau[i][j]);
 
                     }
-                    plateau[i][7].setBackground(Color.BLACK);
+                    plateau[i][7].setIcon(m1);
                     plateau[i][7].setName("Mur");
                 }
                 initTortueSurPlat(this.t1);
@@ -154,30 +153,33 @@ public class Board{
                 panPlat.setBounds(5, 0, 510, 510);
                 for (int i = 0; i < 8; i++) {
                     for (int j = 0; j < 8; j++) {
-//                        plateau[i][j] = new JButton("");
-//                        plateau[i][7] = new JButton("Mur");
+                        plateau[i][j] = new AfficheCase(i,j,"", this);
+                        plateau[i][j].setName("Vide");
                         plateau[i][j].setOpaque(false);
-//                        plateau[i][j].setContentAreaFilled(false);
+                        plateau[i][j].setContentAreaFilled(false);
                         plateau[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
                         pan1.add(plateau[i][j]);
 
                     }
+                    plateau[i][7].setIcon(m1);
+                    plateau[i][7].setName("Mur");
                 }
-
                 initTortueSurPlat(this.t1);
                 initTortueSurPlat(this.t2);
                 initTortueSurPlat(this.t3);
                 initJoyauxSurPlat(this.j1);
                 initJoyauxSurPlat(this.j2);
                 initJoyauxSurPlat(this.j3);
-
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        System.out.println(plateau[i][j].getName());
+                    }}
                 imageP.setIcon(imgplateau);
                 imageP.setBounds(5, 0, 510, 510);
                 panPlat.add(imageP);
                 panPlat.add(pan1);
                 fen.add(pan1);
                 fen.add(panPlat);
-                fen.setVisible(true);
                 break;
 
 
@@ -189,29 +191,32 @@ public class Board{
                 panPlat.setBounds(5, 0, 510, 510);
                 for (int i = 0; i < 8; i++) {
                     for (int j = 0; j < 8; j++) {
-                        //plateau[i][j] = new JButton("");
+                        plateau[i][j] = new AfficheCase(i,j,"", this);
+                        plateau[i][j].setName("Vide");
                         plateau[i][j].setOpaque(false);
-                        //plateau[i][j].setContentAreaFilled(false);
+                        plateau[i][j].setContentAreaFilled(false);
                         plateau[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
                         pan1.add(plateau[i][j]);
 
                     }
-                }
 
+                }
                 initTortueSurPlat(this.t1);
                 initTortueSurPlat(this.t2);
                 initTortueSurPlat(this.t3);
                 initTortueSurPlat(this.t4);
                 initJoyauxSurPlat(this.j1);
                 initJoyauxSurPlat(this.j2);
-
+                for (int i = 0; i < 8; i++) {
+                    for (int j = 0; j < 8; j++) {
+                        System.out.println(plateau[i][j].getName());
+                    }}
                 imageP.setIcon(imgplateau);
                 imageP.setBounds(5, 0, 510, 510);
                 panPlat.add(imageP);
                 panPlat.add(pan1);
                 fen.add(pan1);
                 fen.add(panPlat);
-                fen.setVisible(true);
                 break;
 
         }
@@ -225,7 +230,7 @@ public class Board{
     }
 
     public void initJoyauxSurPlat(Joyaux j) {
-        plateau[j.getPosXJ()][j.getPosYJ()].add(j.getApparenceJ());
+        plateau[j.getPosXJ()][j.getPosYJ()].setIcon(j.getApparenceJ());
         plateau[j.getPosXJ()][j.getPosYJ()].setName("Joyaux");
     }
 

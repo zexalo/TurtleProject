@@ -21,7 +21,6 @@ public class Tortue {
 
     public Tortue() {
 
-
     }
 
     public Tortue(Icon apparence, int i, int j, int score, char direction) {
@@ -36,16 +35,6 @@ public class Tortue {
         this.apparence = apparence;
 
 
-
-        for (int a = 0; a < 8; a++) {
-            for (int b = 0; b < 8; b++) {
-                this.position[a][b] = ' ';
-
-            }
-        }
-        //this.position[i][j] = apparence;
-
-        //this.position=plateau;
     }
 
     public void avancer(JButton[][] plateau) {//instruction d'avancement

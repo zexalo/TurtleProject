@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af9b9bec-6f5b-4416-aa16-a0b071057b47" name="Default Changelist" comment="" />
+    <list default="true" id="af9b9bec-6f5b-4416-aa16-a0b071057b47" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/META-INF/Interface.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cartes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cartes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Fenetre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fenetre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jeu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Joyaux.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Joyaux.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tortue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tortue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Deck.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +35,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1V6R2WpuzwEAgW2SLI4N4CrFUNy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -111,10 +124,34 @@
       <workItem from="1579530650534" duration="671000" />
       <workItem from="1579542727060" duration="824000" />
       <workItem from="1579621977468" duration="2157000" />
+      <workItem from="1579645299447" duration="7576000" />
     </task>
+    <task id="LOCAL-00001" summary="Graphique V1.0">
+      <created>1579645389603</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579645389603</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Graphique V1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Graphique V1.0" />
   </component>
 </project>
