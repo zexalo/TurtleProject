@@ -2,56 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af9b9bec-6f5b-4416-aa16-a0b071057b47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Credits.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Fenetre$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Fenetre$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Fenetre$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Images/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Images/creditspng.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Jouer$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Jouer$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Jouer$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Jouer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/META-INF/Interface.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Interface/Session.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Credits.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Images/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Images/creditspng.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Images/fondjoueur.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Jouer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProjetTurtle/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/META-INF/ProjetTurtle.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/Cartes/doscartes.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/fondjeu.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interface/AfficheCarte$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/AfficheCarte$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interface/AfficheCarte.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/AfficheCarte.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/AfficheCarte$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/AfficheCarte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/AfficheCase$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/AfficheCase$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/AfficheCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/AfficheCase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Interface/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Interface/Cartes$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Cartes$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interface/Cartes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Cartes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Fenetre$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Fenetre$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Fenetre$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Fenetre$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Fenetre$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Fenetre$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Interface/Fenetre.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Fenetre.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Interface/Jeu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Jeu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interface/Joyaux.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Joyaux.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Interface/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Jouer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Jouer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Jouer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Jouer$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Jouer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Jouer$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Jouer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Jouer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Session.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Interface/Tortue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Interface/Tortue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AfficheCarte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AfficheCarte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Interface/TraitementBut1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AfficheCarte.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AfficheCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AfficheCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cartes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cartes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Fenetre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fenetre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Images/fondjoueur.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images/fondjoueur.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jeu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Jouer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jouer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Session.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tortue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tortue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Affichage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Cartes.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Cartes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Jeu.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Jeu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Hand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Tortue.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/out/production/ProjetTurtle/com/robot_turtle/Tortue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Cartes.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Cartes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Jeu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Tortue.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTurtle/src/com/robot_turtle/Tortue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TraitementBut1.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,15 +71,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\zexal\Desktop\Cours A1\Algo et Prog\new_turtle\TurtleProject\Interface\src\Images" />
       <recent name="C:\Users\zexal\Desktop\Cours A1\Algo et Prog\new_turtle\TurtleProject\Interface\src" />
       <recent name="C:\Users\zexal\workspace\Interface\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zexal\Desktop\Cours A1\Algo et Prog\new_turtle\TurtleProject\Interface\src\Images\Cartes" />
       <recent name="C:\Users\zexal\Desktop\Cours A1\Algo et Prog\new_turtle\TurtleProject\Interface\src\Images" />
       <recent name="C:\Users\zexal\Desktop\Cours A1\Algo et Prog\new_turtle\TurtleProject\Interface\src\Images\Turtle" />
       <recent name="C:\Users\zexal\workspace\Interface\src" />
       <recent name="C:\Users\zexal\workspace\Interface\src\image" />
-      <recent name="C:\Users\zexal\workspace\Interface\image" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -109,15 +96,15 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Jeu">
-    <configuration name="Jeu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Jeu" />
+    <configuration name="Hand" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Hand" />
       <module name="Interface" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+    <configuration name="Jeu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Jeu" />
       <module name="Interface" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -177,7 +164,9 @@
       <workItem from="1579645299447" duration="8328000" />
       <workItem from="1579691404921" duration="2656000" />
       <workItem from="1579718826372" duration="1088000" />
-      <workItem from="1579726072934" duration="1652000" />
+      <workItem from="1579726072934" duration="7613000" />
+      <workItem from="1579957911768" duration="14448000" />
+      <workItem from="1580072788080" duration="1108000" />
     </task>
     <task id="LOCAL-00001" summary="Graphique V1.0">
       <created>1579645389603</created>
@@ -193,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579652951842</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Graphique V1.0 jouer a plusieur + menu">
+      <created>1579728078680</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1579728078680</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +211,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Graphique V1.0" />
     <MESSAGE value="Graphique V1.0 jouer a plusieur" />
-    <option name="LAST_COMMIT_MESSAGE" value="Graphique V1.0 jouer a plusieur" />
+    <MESSAGE value="Graphique V1.0 jouer a plusieur +" />
+    <MESSAGE value="Graphique V1.0 jouer a plusieur + menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Graphique V1.0 jouer a plusieur + menu" />
   </component>
 </project>

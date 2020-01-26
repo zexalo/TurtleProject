@@ -28,10 +28,10 @@ public class Cartes extends JButton {
 
                 }
                 if ( fen.getPlateau().getMode().equals(Mode.DEFAUSSE)){
-                    System.out.println(fen.getPlateau().getTortue().get(fen.getJoueur()).getMain().getMa_main());
+                    System.out.println(fen.getPlateau().getTortue().get(fen.getJoueur()).getHand().getMa_main());
                     mouseEvent.getComponent().setVisible(false);
                     String name=mouseEvent.getComponent().getName();
-                    fen.getPlateau().getTortue().get(fen.getJoueur()).getMain().defausser(name);
+                    fen.getPlateau().getTortue().get(fen.getJoueur()).getHand().defausser(name);
 
 
                 }

@@ -6,7 +6,7 @@ public class Jeu {
 //        fen.jeu();
 //        fen.setVisible(true);
         Fenetre fene = new Fenetre();
-        fene.setVisible(true);
+
 
 
 

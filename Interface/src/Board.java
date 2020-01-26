@@ -32,6 +32,10 @@ public class Board{
 
     public Session fe;
 
+    public Board(){
+
+    }
+
     public Board(int nbrJoueur) {
         this.mode = Mode.JEU;
         this.nbrJoueur = nbrJoueur;
@@ -59,24 +63,24 @@ public class Board{
         switch (nbrJoueur) {
             //Switch case qui construit le plateau selon le nombre de joueur demander
             case 2:
-                this.t1 = new Tortue(i1, 0, 1, 0, 'S');
-                this.t2 = new Tortue(i2, 0, 5, 0, 'S');
+                this.t1 = new Tortue(i1, 6, 3, 0, 'S',this);
+                this.t2 = new Tortue(i2, 0, 5, 0, 'S',this);
                 this.j1 = new Joyaux(ji1, 7, 3);
 
                 break;
             case 3:
-                this.t1 = new Tortue(i1, 0, 0, 0, 'S');
-                this.t2 = new Tortue(i2, 0, 3, 0, 'S');
-                this.t3 = new Tortue(i3, 0, 6, 0, 'S');
+                this.t1 = new Tortue(i1, 0, 0, 0, 'S',this);
+                this.t2 = new Tortue(i2, 0, 3, 0, 'S',this);
+                this.t3 = new Tortue(i3, 0, 6, 0, 'S',this);
                 this.j1 = new Joyaux(ji1, 7, 0);
                 this.j2 = new Joyaux(ji1, 7, 3);
                 this.j3 = new Joyaux(ji1, 7, 6);
                 break;
             case 4:
-                this.t1 = new Tortue(i1, 0, 0, 0, 'S');
-                this.t2 = new Tortue(i2, 0, 2, 0, 'S');
-                this.t3 = new Tortue(i3, 0, 5, 0, 'S');
-                this.t4 = new Tortue(i4, 0, 7, 0, 'S');
+                this.t1 = new Tortue(i1, 0, 0, 0, 'S',this);
+                this.t2 = new Tortue(i2, 0, 2, 0, 'S',this);
+                this.t3 = new Tortue(i3, 0, 5, 0, 'S',this);
+                this.t4 = new Tortue(i4, 0, 7, 0, 'S',this);
                 this.j1 = new Joyaux(ji1, 7, 1);
                 this.j2 = new Joyaux(ji1, 7, 6);
                 break;
@@ -121,7 +125,7 @@ public class Board{
                         plateau[i][j].setName("Vide");
                         plateau[i][j].setOpaque(false);
                         plateau[i][j].setContentAreaFilled(false);
-                        plateau[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
+                        //plateau[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
                         pan1.add(plateau[i][j]);
 
                     }
@@ -155,7 +159,7 @@ public class Board{
                         plateau[i][j].setName("Vide");
                         plateau[i][j].setOpaque(false);
                         plateau[i][j].setContentAreaFilled(false);
-                        plateau[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
+                        //plateau[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
                         pan1.add(plateau[i][j]);
 
                     }
@@ -193,7 +197,7 @@ public class Board{
                         plateau[i][j].setName("Vide");
                         plateau[i][j].setOpaque(false);
                         plateau[i][j].setContentAreaFilled(false);
-                        plateau[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
+                        //plateau[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
                         pan1.add(plateau[i][j]);
 
                     }
@@ -223,8 +227,8 @@ public class Board{
     }
 
     public void initTortueSurPlat(Tortue t) {
-              plateau[t.getPosX()][t.getPosY()].setIcon(t.getApparence());
-              plateau[t.getPosX()][t.getPosY()].setName("Tortue");
+        plateau[t.getPosX()][t.getPosY()].setIcon(t.getApparence());
+        plateau[t.getPosX()][t.getPosY()].setName("Tortue");
     }
 
     public void initJoyauxSurPlat(Joyaux j) {
@@ -343,6 +347,10 @@ public class Board{
 
         }
         return listjoyaux;
+    }
+
+    public Joyaux getJ1() {
+        return j1;
     }
 
     public Mode getMode() {

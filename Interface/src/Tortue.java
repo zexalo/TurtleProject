@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Tortue {
+public class Tortue{
     private Deck deck;
-    private Main main;
+    private Hand hand;
     //private int posX;
     //private int posY;
     private int score;
@@ -17,6 +18,7 @@ public class Tortue {
     private int initPosj;
     private ArrayDeque<Cartes> instruction;
     private int nbrCartePile=0;
+    private Board board;
     Scanner scanner = new Scanner(System.in);
     Icon apparence;
 
@@ -25,9 +27,9 @@ public class Tortue {
 
     }
 
-    public Tortue(Icon apparence, int i, int j, int score, char direction) {
+    public Tortue(Icon apparence, int i, int j, int score, char direction,Board board) {
         this.deck = new Deck();
-        this.main = new Main(this.deck);
+        this.hand = new Hand(this.deck);
         this.i = i;
         this.j = j;
         this.initPosi = i;
@@ -37,29 +39,31 @@ public class Tortue {
         this.instruction = new ArrayDeque<Cartes>();
         this.position = new char[8][8];
         this.apparence = apparence;
+        this.board =board;
 
 
     }
 
     public void avancer(JButton[][] plateau) {//instruction d'avancement
 
-        if (this.direction == 'E' && !plateau[this.i][7].getName().equals("Tortue")) {//si la direction est east et que le pion n'est pas en position de sortir du terrain par l'east
+        if (this.direction == 'E' && !plateau[this.i][7].getName().equals("Tortue")&& !plateau[this.i][this.j+1].getName().equals("Mur")&& !plateau[this.i][this.j+1].getName().equals("Glace")) {//si la direction est east et que le pion n'est pas en position de sortir du terrain par l'east
             plateau[this.i][this.j].setName("Vide");
-            plateau[this.i][this.j].setIcon(null);//on met sa position post-deplacement a 0
-            this.j++;// on ajoute 1 a j qui correspond au numero de la colonne
+            plateau[this.i][this.j].setIcon(null);
+            this.j++;//
             plateau[this.i][this.j].setName("Tortue");
-            plateau[this.i][this.j].setIcon(this.getApparence());// On met 1 a sa nouvelle position ici la ligne etant inchange le pion sera a la position i/j+1
+            plateau[this.i][this.j].setIcon(this.getApparence());
             this.deck.getDeck_defausse().add(this.instruction.getFirst());
 
 
 
 
-        } else if (this.direction == 'E' && plateau[this.i][7].getName().equals("Tortue")) {
+        } else if (this.j!=7&&plateau[this.i][this.j+1].getName().equals("Mur")&& plateau[this.i][this.j+1].getName().equals("Glace")) {
+            this.direction = 'W';
             this.deck.getDeck_defausse().add(this.instruction.getFirst());
-            //on prend en compte la position limite de la direction EAST (toute les LIGNES de la DERNIERE colonne)
+            this.instruction.pollFirst();
 
         }
-        if (this.direction == 'W' && !plateau[this.i][7].getName().equals("Tortue")) {//si la direction est ouest et que le pion n'est pas en position de sortir du terrain par l'ouest
+        if (this.direction == 'W' && !plateau[this.i][7].getName().equals("Tortue")&& !plateau[this.i][this.j-1].getName().equals("Mur")&& !plateau[this.i][this.j-1].getName().equals("Glace")) {//si la direction est ouest et que le pion n'est pas en position de sortir du terrain par l'ouest
             plateau[this.i][this.j].setName("Vide");
             plateau[this.i][this.j].setIcon(null);//on met sa position post-deplacement a 0
             this.j--;// on enleve 1 a j qui correspond au numero de la colonne
@@ -69,13 +73,14 @@ public class Tortue {
 
 
 
-        } else if (this.direction == 'W' && plateau[this.i][0].getName().equals("Tortue")) {//on prend en compte la position limite de la direction OUEST (toute les LIGNES de la PREMIERE colonne)
+        } else if(this.j!=0&&plateau[this.i][this.j-1].getName().equals("Mur")&& plateau[this.i][this.j-1].getName().equals("Glace")) {//on prend en compte la position limite de la direction OUEST (toute les LIGNES de la PREMIERE colonne)
+            this.direction = 'E';
             this.deck.getDeck_defausse().add(this.instruction.getFirst());
-
+            this.instruction.pollFirst();
 
             // si le pion est dans cette position on retire juste l'instruction
         }
-        if (this.direction == 'N' && !plateau[0][this.j].getName().equals("Tortue")) {
+        if (this.direction == 'N' && !plateau[0][this.j].getName().equals("Tortue")&& !plateau[this.i-1][this.j].getName().equals("Mur")&& !plateau[this.i-1][this.j].getName().equals("Glace")) {
             plateau[this.i][this.j].setName("Vide");
             plateau[this.i][this.j].setIcon(null);//on met sa position post-deplacement a 0
             this.i--;// on enleve 1 a i qui correspond au numero de la ligne
@@ -85,27 +90,28 @@ public class Tortue {
 
 
 
-        } else if (this.direction == 'N' && plateau[0][this.j].getName().equals("Tortue")) {//on prend en compte la position limite de la direction NORD (toute les COLONNES de la PREMIERE ligne)
+        } else if (this.i!=0&&plateau[this.i-1][this.j].getName().equals("Mur")&& plateau[this.i-1][this.j].getName().equals("Glace")) {//on prend en compte la position limite de la direction NORD (toute les COLONNES de la PREMIERE ligne)
+            this.direction = 'S';
             this.deck.getDeck_defausse().add(this.instruction.getFirst());
             this.instruction.pollFirst();
 
             // si le pion est dans cette position on retire juste l'instruction
         }
-        if (this.direction == 'S' && !plateau[7][this.j].getName().equals("Tortue")) {
+        if (this.direction == 'S' && !plateau[7][this.j].getName().equals("Tortue")&& plateau[this.i+1][this.j].getName().equals("Vide")||plateau[this.i+1][this.j].getName().equals("Joyaux")) {
             plateau[this.i][this.j].setName("Vide");
-            plateau[this.i][this.j].setIcon(null);//on met sa position post-deplacement a 0
+            plateau[this.i][this.j].setIcon(null);
             this.i++;// on ajoute 1 a i qui correspond au numero de la ligne
             plateau[this.i][this.j].setName("Tortue");
             plateau[this.i][this.j].setIcon(this.getApparence());// On met 1 a sa nouvelle position ici la colonne etant inchange le pion sera a la position i+1/j
+            //this.deck.getDeck_defausse().add(this.instruction.getFirst());
+
+
+
+
+        } else if(this.i!=7&&plateau[this.i+1][this.j].getName().equals("Mur")&& plateau[this.i+1][this.j].getName().equals("Glace")){//on prend en compte la position limite de la direction SUD (toute les COLONNES de la DERNIERE ligne)
+            this.direction = 'N';
             this.deck.getDeck_defausse().add(this.instruction.getFirst());
-
-
-
-
-        } else if (this.direction == 'S' && plateau[7][this.j].getName().equals("Tortue")) {//on prend en compte la position limite de la direction SUD (toute les COLONNES de la DERNIERE ligne)
-            this.deck.getDeck_defausse().add(this.instruction.getFirst());
-
-
+            this.instruction.pollFirst();
             // si le pion est dans cette position on retire juste l'instruction
         }
     }
@@ -281,10 +287,10 @@ public class Tortue {
 
 
                 if (action.equals("bleu")) {
-                    if (this.main.getMa_main().contains(getDeck().getCarteBleu())) {
-                        int b = this.main.getMa_main().indexOf(getDeck().getCarteBleu());
-                        this.instruction.addLast(this.main.getMa_main().get(b));
-                        this.main.getMa_main().remove(b);
+                    if (this.hand.getMa_main().contains(getDeck().getCarteBleu())) {
+                        int b = this.hand.getMa_main().indexOf(getDeck().getCarteBleu());
+                        this.instruction.addLast(this.hand.getMa_main().get(b));
+                        this.hand.getMa_main().remove(b);
 
 
 
@@ -292,10 +298,10 @@ public class Tortue {
                         System.out.println("Vous n'avez pas de carte bleu !");
                     }
                 } else if (action.equals("laser")) {
-                    if (this.main.getMa_main().contains(getDeck().getCarteLaser())) {
-                        int l = this.main.getMa_main().indexOf(getDeck().getCarteLaser());
-                        this.instruction.addLast(this.main.getMa_main().get(l));
-                        this.main.getMa_main().remove(l);
+                    if (this.hand.getMa_main().contains(getDeck().getCarteLaser())) {
+                        int l = this.hand.getMa_main().indexOf(getDeck().getCarteLaser());
+                        this.instruction.addLast(this.hand.getMa_main().get(l));
+                        this.hand.getMa_main().remove(l);
 
 
 
@@ -304,10 +310,10 @@ public class Tortue {
                     }
 
                 } else if (action.equals("jaune")) {
-                    if (this.main.getMa_main().contains(getDeck().getCarteJaune())) {
-                        int j = this.main.getMa_main().indexOf(getDeck().getCarteJaune());
-                        this.instruction.addLast(this.main.getMa_main().get(j));
-                        this.main.getMa_main().remove(j);
+                    if (this.hand.getMa_main().contains(getDeck().getCarteJaune())) {
+                        int j = this.hand.getMa_main().indexOf(getDeck().getCarteJaune());
+                        this.instruction.addLast(this.hand.getMa_main().get(j));
+                        this.hand.getMa_main().remove(j);
 
 
 
@@ -315,10 +321,10 @@ public class Tortue {
                         System.out.println("Vous n'avez pas de carte Jaune !");
                     }
                 } else if (action.equals("violet")) {
-                    if (this.main.getMa_main().contains(getDeck().getCarteViolet())) {
-                        int v = this.main.getMa_main().indexOf(getDeck().getCarteViolet());
-                        this.instruction.addLast(this.main.getMa_main().get(v));
-                        this.main.getMa_main().remove(v);
+                    if (this.hand.getMa_main().contains(getDeck().getCarteViolet())) {
+                        int v = this.hand.getMa_main().indexOf(getDeck().getCarteViolet());
+                        this.instruction.addLast(this.hand.getMa_main().get(v));
+                        this.hand.getMa_main().remove(v);
 
 
                     } else {
@@ -326,18 +332,19 @@ public class Tortue {
                     }
                 }
                 nbrCartePile++;
+                this.joyAtteint();
 
 
 
         }
 
 
-    public void executerProg(JButton[][] plateau) {
+    public void executerProg(Board plateau) {
 
         for (int i = nbrCartePile; i > 0; i--) {//erreur avec instruction.size() comme modifier dans avancer et rotationD/G boucle non respecter
             nbrCartePile=0;
             if (this.instruction.getFirst().equals(getDeck().getCarteBleu())) {
-                avancer(plateau);
+                avancer(plateau.getPlateau());
                 this.instruction.pollFirst();
             } else if (this.instruction.getFirst().equals(getDeck().getCarteJaune())) {
                 rotationG();
@@ -346,13 +353,14 @@ public class Tortue {
                 rotationD();
                 this.instruction.pollFirst();
             } else if (this.instruction.getFirst().equals(getDeck().getCarteLaser())) {
-                //utiliserLaser(plateau);
+                utiliserLaser(plateau);
                 this.deck.getDeck_defausse().add(this.instruction.getFirst());
                 this.instruction.pollFirst(); // a reporter pour rotation et avancer
             }
 
 
         }
+        this.joyAtteint();
 
 
 
@@ -403,8 +411,8 @@ public class Tortue {
         return this.deck;
     }
 
-    public Main getMain() {
-        return this.main;
+    public Hand getHand() {
+        return this.hand;
     }
 
     public ArrayDeque<Cartes> getInstruction() {
@@ -414,6 +422,16 @@ public class Tortue {
     public int getNbrCartePile() {
         return nbrCartePile;
     }
+    public void joyAtteint() {
+        System.out.println(board.getJ1());
+        if (this.getPosX() == board.getJ1().getPosXJ() && this.getPosY() == board.getJ1().getPosYJ()) {
+            this.score++;
+            System.out.println("Votre score augmente : " +this.score);
+
+        }
+
+    }
+
 
     public void voirInstruction(Session fen) {
 

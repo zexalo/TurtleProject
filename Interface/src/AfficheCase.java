@@ -12,23 +12,28 @@ public class AfficheCase extends JButton {
 
     public AfficheCase(int x, int y, String nom, Board board)
     {
+
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
 
                 int buttondown = mouseEvent.getButton();
 
-                if ( board.getMode().equals(Mode.PLACEMENT) && buttondown==MouseEvent.BUTTON1 && board.getTortue().get(0).getDeck().getNbrGlace()!=0){
-                        placerMurGlace(board);
+                if ( board.getMode().equals(Mode.PLACEMENT) && buttondown==MouseEvent.BUTTON1 && board.getTortue().get(0).getDeck().getNbrGlace()!=0
+                        && mouseEvent.getComponent().getName().equals("Vide")){
+                    placerMurGlace(board);
+                    board.setMode(Mode.JEU);
 
                 }
 
-                if ( board.getMode().equals(Mode.PLACEMENT) && buttondown==MouseEvent.BUTTON3 && board.getTortue().get(0).getDeck().getNbrPierre()!=0){
-                        placerMur(board);
+                if ( board.getMode().equals(Mode.PLACEMENT) && buttondown==MouseEvent.BUTTON3 && board.getTortue().get(0).getDeck().getNbrPierre()!=0
+                        && mouseEvent.getComponent().getName().equals("Vide")){
+                    placerMur(board);
+                    board.setMode(Mode.JEU);
 
                 }
 
-                board.setMode(Mode.JEU);
+
 
             }
 

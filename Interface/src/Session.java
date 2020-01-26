@@ -1,15 +1,8 @@
-import javafx.scene.shape.DrawMode;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.xml.transform.Source;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.ArrayList;
 
 public class Session extends JFrame implements ActionListener {
 
@@ -25,6 +18,7 @@ public class Session extends JFrame implements ActionListener {
     private JPanel panMain;
     private JPanel panInfo;
     private JPanel pan2;
+    private JPanel panFond;
     private JPanel pan_instruction;
     private static int tour=0;
     private static int joueur=0;
@@ -35,7 +29,7 @@ public class Session extends JFrame implements ActionListener {
         //plateau.setNbrJoueur(Jouer.getNbrJoueur());
         this.compteur_instruction=0;
         this.setTitle("Test Turtle");
-        int width = 1920;
+        int width = 1400;
         int height = 820;
         this.setSize(width, height);
         this.setLocationRelativeTo(null);
@@ -43,24 +37,30 @@ public class Session extends JFrame implements ActionListener {
         this.getContentPane().setLayout(null);
 
 
-
+        panFond=new JPanel();
+        panFond.setBounds(0,0,1400,820);
+        Icon fond = new ImageIcon(this.getClass().getResource("Images/fondjeu.jpg"));
+        JLabel fondl =new JLabel();
+        fondl.setIcon(fond);
+        panFond.add(fondl);
 
         //Panel Boutton 3 Actions
         pan2 = new JPanel();
         tourN = new JLabel("Tour N° " + tour);
+        tourN.setForeground(Color.white);
         buttonCompleter = new JButton("Completer Programme");
         buttonExecuter = new JButton("Executer Programme");
         buttonPlacer = new JButton("Placer Tuile");
         valider= new JButton("Valider !");
 
         pan2.setLayout(new GridLayout(3, 1));
+        pan2.setOpaque(false);
         pan2.add(buttonCompleter);
         pan2.add(buttonExecuter);
         pan2.add(buttonPlacer);
         pan2.add(valider);
         valider.setVisible(false);
-        pan2.setBounds(1000, 0, 400, 100);
-        pan2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
+        pan2.setBounds(900, 0, 400, 100);
         pan2.add(tourN);
 
 
@@ -72,43 +72,56 @@ public class Session extends JFrame implements ActionListener {
 
         //Panel Joueur
         panMain = new JPanel();
-        panMain.setLayout(new GridLayout(1, 5, 5, 5));
+        panMain.setOpaque(false);
+        panMain.setLayout(new GridLayout(1, 5, 2, 2));
 
         for (int i=0;i<5;i++){
             panMain.add(new Cartes(this));
 
         }
-        panMain.setBounds(1000, 580, 500, 200);
+        panMain.setBounds(800, 580, 570, 175);
         panMain.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
 
         //Panel Info
         panInfo = new JPanel();
         info = new JLabel();
-        info.setText("Joueur n " + joueur);
-        panInfo.setBounds(0, 550, 550, 230);
-        panInfo.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
+        info.setText("Joueur n° " + joueur);
+        info.setForeground(Color.white);
+        info.setSize(200,200);
+        panInfo.setBounds(0, 550, 500, 230);
+        panInfo.setOpaque(false);
         panInfo.add(info);
 
         //Panel instruction
         pan_instruction=new JPanel();
-        pan_instruction.setLayout(new GridLayout());
-        pan_instruction.setBounds(1000,300,500,250);
+        pan_instruction.setLayout(new GridLayout(1,5,2,2));
+        pan_instruction.setOpaque(false);
+        pan_instruction.setBounds(800,300,570,175);
         pan_instruction.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLUE));
 
+
+        Icon fondDosCarte = new ImageIcon(this.getClass().getResource("Images/Cartes/doscartes.jpg"));
         for(int i=0;i<5;i++){
             Cartes carte_instruction = new Cartes();
             carte_instruction.setVisible(false);
+            carte_instruction.setIcon(fondDosCarte);
             pan_instruction.add(carte_instruction);
 
         }
 
 
 
-        plateau.initPlacement(this);
+
+
         this.add(pan_instruction);
         this.add(panMain);
         this.add(panInfo);
         this.add(pan2);
+        plateau.initPlacement(this);
+        this.add(panFond);
+
+
+        this.setVisible(true);
 
     }
 
@@ -142,34 +155,34 @@ public class Session extends JFrame implements ActionListener {
             //Switch case qui construit le plateau selon le nombre de joueur demander
             case 2:
                 plateau.getTortue().get(0).getDeck().melange();
-                plateau.getTortue().get(0).getMain().piocheDepart();
+                plateau.getTortue().get(0).getHand().piocheDepart();
                 plateau.getTortue().get(1).getDeck().melange();
-                plateau.getTortue().get(1).getMain().piocheDepart();
+                plateau.getTortue().get(1).getHand().piocheDepart();
 
                 break;
             case 3:
                 plateau.getTortue().get(0).getDeck().melange();
-                plateau.getTortue().get(0).getMain().piocheDepart();
+                plateau.getTortue().get(0).getHand().piocheDepart();
                 plateau.getTortue().get(1).getDeck().melange();
-                plateau.getTortue().get(1).getMain().piocheDepart();
+                plateau.getTortue().get(1).getHand().piocheDepart();
                 plateau.getTortue().get(2).getDeck().melange();
-                plateau.getTortue().get(2).getMain().piocheDepart();
+                plateau.getTortue().get(2).getHand().piocheDepart();
 
                 break;
             case 4:
                 plateau.getTortue().get(0).getDeck().melange();
-                plateau.getTortue().get(0).getMain().piocheDepart();
+                plateau.getTortue().get(0).getHand().piocheDepart();
                 plateau.getTortue().get(1).getDeck().melange();
-                plateau.getTortue().get(1).getMain().piocheDepart();
+                plateau.getTortue().get(1).getHand().piocheDepart();
                 plateau.getTortue().get(2).getDeck().melange();
-                plateau.getTortue().get(2).getMain().piocheDepart();
+                plateau.getTortue().get(2).getHand().piocheDepart();
                 plateau.getTortue().get(3).getDeck().melange();
-                plateau.getTortue().get(3).getMain().piocheDepart();
+                plateau.getTortue().get(3).getHand().piocheDepart();
 
                 break;
 
         }
-        plateau.getTortue().get(0).getMain().voirMain(this);
+        plateau.getTortue().get(0).getHand().voirMain(this);
     }
 
 
@@ -187,13 +200,9 @@ public class Session extends JFrame implements ActionListener {
 
             } else if (actionEvent.getSource() == buttonExecuter && !plateau.getTortue().get(joueur).getInstruction().isEmpty()) {
 
-                plateau.getTortue().get(joueur).executerProg(plateau.getPlateau());
-                this.setCompteur_instruction(0);
-                for (int i=0;i<5;i++){
-                    pan_instruction.getComponent(i).setVisible(false);
-                }
+                plateau.getTortue().get(joueur).executerProg(plateau);
                 this.changementTour();
-                plateau.getTortue().get(joueur).getMain().voirMain(this);
+                plateau.getTortue().get(joueur).getHand().voirMain(this);
                 System.out.println(joueur);
 
 
@@ -216,16 +225,20 @@ public class Session extends JFrame implements ActionListener {
                 modeDefausse();
                 info.setText("Selectionner les cartes a defausser");
             }else if (actionEvent.getSource() == valider && plateau.getMode().equals(Mode.DEFAUSSE)){
+                this.setCompteur_instruction(0);
+                for (int i=0;i<5;i++){
+                    pan_instruction.getComponent(i).setVisible(false);
+                }
                 info.setText("Joueur n " + joueur);
-                plateau.getTortue().get(joueur).getMain().piocheCarte();
+                plateau.getTortue().get(joueur).getHand().piocheCarte();
                 plateau.setMode(Mode.JEU);
-                plateau.getTortue().get(joueur).getMain().voirMain(this);
+                plateau.getTortue().get(joueur).getHand().voirMain(this);
                 for(int i=0;i<5;i++){
                     panMain.getComponent(i).setVisible(true);
                 }
                 modeJeu();
                 this.changementTour();
-                plateau.getTortue().get(joueur).getMain().voirMain(this);
+                plateau.getTortue().get(joueur).getHand().voirMain(this);
                 System.out.println(tour);
                 System.out.println(joueur);
 
@@ -233,7 +246,7 @@ public class Session extends JFrame implements ActionListener {
                 modeJeu();
                 info.setText("Joueur n " + joueur);
                 this.changementTour();
-               plateau.getTortue().get(joueur).getMain().voirMain(this);
+               plateau.getTortue().get(joueur).getHand().voirMain(this);
                 System.out.println(tour);
                 System.out.println(joueur);
 
@@ -295,7 +308,7 @@ public class Session extends JFrame implements ActionListener {
         if (joueur == plateau.getNbrJoueur()) {
             joueur = 0;
         }
-        plateau.getTortue().get(joueur).getMain().voirMain(this);
+        plateau.getTortue().get(joueur).getHand().voirMain(this);
         tourN.setText("Tour N° " + tour);
         info.setText("Joueur n " + joueur);
     }

@@ -65,6 +65,8 @@ class Fenetre extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Jouer fenJoueur = new Jouer();
+
+
             }
         });
         bouton_quitter.addActionListener(new ActionListener() {
@@ -84,6 +86,7 @@ class Fenetre extends JFrame {
         this.add(panel_bouton2);
         this.add(panel_bouton3);
         this.add(panel1);
+
 
         this.setVisible(true);
     }

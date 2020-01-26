@@ -39,21 +39,21 @@ class Jouer extends JFrame {
         bouton_4joueurs.setBounds(0,0, 115, 50);
 
         panel2_bouton1.setLayout(null);
-        panel2_bouton1.setBounds(25,60,115,50);
+        panel2_bouton1.setBounds(25,190,115,50);
         panel2_bouton1.add(bouton_2joueurs);
         bouton_2joueurs.setOpaque(false);
         bouton_2joueurs.setContentAreaFilled(false);
         panel2_bouton1.setOpaque(false);
 
         panel2_bouton2.setLayout(null);
-        panel2_bouton2.setBounds(25,150,115,50);
+        panel2_bouton2.setBounds(240,190,115,50);
         panel2_bouton2.add(bouton_3joueurs);
         bouton_3joueurs.setOpaque(false);
         bouton_3joueurs.setContentAreaFilled(false);
         panel2_bouton2.setOpaque(false);
 
         panel2_bouton3.setLayout(null);
-        panel2_bouton3.setBounds(25,243,115,50);
+        panel2_bouton3.setBounds(455,190,115,50);
         panel2_bouton3.add(bouton_4joueurs);
         bouton_4joueurs.setOpaque(false);
         bouton_4joueurs.setContentAreaFilled(false);
@@ -63,8 +63,8 @@ class Jouer extends JFrame {
         bouton_2joueurs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Session fenJeu = new Session();
                 nbrJoueur=2;
+                Session fenJeu = new Session();
                 fenJeu.jeu();
                 fenJeu.setVisible(true);
 
@@ -73,8 +73,8 @@ class Jouer extends JFrame {
         bouton_3joueurs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Session fenJeu = new Session();
                 nbrJoueur=3;
+                Session fenJeu = new Session();
                 fenJeu.jeu();
                 fenJeu.setVisible(true);
 
@@ -83,8 +83,8 @@ class Jouer extends JFrame {
         bouton_4joueurs.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Session fenJeu = new Session();
                 nbrJoueur=4;
+                Session fenJeu = new Session();
                 fenJeu.jeu();
                 fenJeu.setVisible(true);
 
