@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Deque;
 
 public class Deck extends Tortue {
+
     private ArrayList<Cartes>pileDefausse;
     private ArrayList<Cartes> mon_deck;
     private ArrayDeque<Cartes> deque_deck;

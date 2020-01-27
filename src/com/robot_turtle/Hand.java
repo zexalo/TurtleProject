@@ -2,7 +2,7 @@ package com.robot_turtle;
 
 import java.util.ArrayList;
 
-public class Main extends Tortue {
+public class Hand extends Tortue {
     private ArrayList<Cartes> ma_main ;
     private Deck deck;
 
@@ -15,7 +15,7 @@ public class Main extends Tortue {
         this.ma_main = ma_main;
     }
 
-    Main(Deck deck){
+    Hand(Deck deck){
         this.deck = deck;
         this.ma_main = new ArrayList<>();
 

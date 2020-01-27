@@ -21,6 +21,7 @@ public class Board extends Jeu {
 
     public Board(int nbrJoueur) {
         this.nbrJoueur = nbrJoueur;
+        //on construit le plateau selon le nombre de joueur
         switch (nbrJoueur) {
             case 2:
                 this.t1 = new Tortue('0', 0, 1, 0, 'S');
@@ -64,6 +65,7 @@ public class Board extends Jeu {
 
     public void initPlacement() {
         plateau = new char[8][8];
+        // on initialise le plateau selon le nombre d ejoueur
         switch (this.nbrJoueur) {
 
             case 2:
@@ -175,6 +177,7 @@ public class Board extends Jeu {
         return taille;
     }
 
+    //on recuperer une liste de tortue (notre liste de joueur )
     public ArrayList<Tortue> getTortue() {
         ArrayList<Tortue> listortue = new ArrayList<>();
         switch (nbrJoueur) {
@@ -194,6 +197,7 @@ public class Board extends Jeu {
         }
         return listortue;
     }
+    //on recup la liste de joyaux
     public ArrayList<Joyaux> getJoyaux() {
         ArrayList<Joyaux> listjoyaux = new ArrayList<>();
         switch (nbrJoueur) {
